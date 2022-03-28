@@ -1,0 +1,54 @@
+.result-card {
+  background-color: hsl(183, 100%, 15%);
+  color: hsl(189, 41%, 97%);
+  border-radius: 0.8rem;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+h4 {
+  color: hsl(184, 14%, 56%);
+}
+
+input {
+  font: inherit;
+  border-style: none;
+  border-radius: 0.3rem;
+  padding: 0.6em;
+  margin: 0.5em 0 1em 0;
+  width: 100%;
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(189, 41%, 97%);
+}
+
+.tip-selector-box {
+  padding: 1em 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 0.8em;
+}
+
+.tip-percentage-box {
+  text-align: center;
+  color: hsl(189, 41%, 97%);
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: hsl(183, 100%, 15%);
+}
+
+.custom {
+  background-color: hsl(189, 41%, 97%);
+  color: hsl(184, 14%, 56%);
+}
+
+.tip-result-box {
+  padding: 1em 0;
+  display: flex;
+}
+
+.tip-text-box {
+  display: flex;
+  flex-direction: column;
+}

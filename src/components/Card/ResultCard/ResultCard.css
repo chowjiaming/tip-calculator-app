@@ -1,0 +1,29 @@
+.input-card {
+  padding: 1em;
+}
+
+.result-heading {
+  color: hsl(189, 41%, 97%);
+}
+
+.per-person {
+  color: hsl(184, 14%, 56%);
+  letter-spacing: 0.1em;
+  font-size: 0.7em;
+}
+
+.tip-result {
+  color: hsl(172, 67%, 45%);
+  font-size: 2em;
+  margin-left: auto;
+}
+
+.reset-button {
+  margin-top: auto;
+  padding: 0.5em;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(172, 67%, 45%);
+}

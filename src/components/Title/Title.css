@@ -1,0 +1,11 @@
+.title-box {
+  padding: 4em;
+  justify-self: center;
+}
+
+.title {
+  color: hsl(186, 14%, 43%);
+  line-height: 1em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}

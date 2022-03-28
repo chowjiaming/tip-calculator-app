@@ -1,0 +1,25 @@
+body {
+  font-family: "Space Mono", monospace;
+  background-color: hsl(185, 41%, 84%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  padding-bottom: 5em;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .container {
+    transform: translateY(-10vh);
+    width: auto;
+    padding-bottom: 0;
+  }
+}

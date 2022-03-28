@@ -1,0 +1,12 @@
+.card {
+    padding: 1.5em;
+    border-radius: 1rem;
+    background-color: hsl(0, 0%, 100%);
+  }
+  
+  @media (min-width: 720px) {
+    .card {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
