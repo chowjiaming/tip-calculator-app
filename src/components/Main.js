@@ -1,7 +1,7 @@
-import { Fragment } from 'react'
-import Title from './Title/Title'
-import Card from './Card/Card'
-import Attributions from './Attributions/Attributions'
+import { Fragment } from "react";
+import Title from "./Title/Title";
+import Card from "./Card/Card";
+import Attributions from "./Attributions/Attributions";
 
 export default function Main() {
   return (
@@ -12,6 +12,5 @@ export default function Main() {
       </div>
       <Attributions />
     </Fragment>
-
-  )
+  );
 }
