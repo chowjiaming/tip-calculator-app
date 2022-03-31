@@ -106,7 +106,7 @@ export default function InputCard(props) {
         <input
           type="text"
           className="number-of-people"
-          placeholder="1"
+          placeholder={0}
           value={inputData.numOfPeople || ""}
           onChange={handlePeopleChange}
         />

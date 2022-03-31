@@ -7,7 +7,7 @@ export default function Main() {
   const [inputData, setInputData] = useState({
     billAmount: 0,
     tipPercentage: 5,
-    numOfPeople: 1,
+    numOfPeople: 0,
   });
   const [tipResult, setTipResult] = useState({
     personalTipAmount: 0,
@@ -15,10 +15,12 @@ export default function Main() {
   })
 
   useEffect(() => {
-    setTipResult({
-      totalTipAmount: inputData.billAmount * (inputData.tipPercentage * 0.01),
-      personalTipAmount: (inputData.billAmount * (inputData.tipPercentage * 0.01)) / inputData.numOfPeople
-    });
+    if (inputData.numOfPeople) {
+      setTipResult({
+        totalTipAmount: inputData.billAmount * (inputData.tipPercentage * 0.01),
+        personalTipAmount: (inputData.billAmount * (inputData.tipPercentage * 0.01)) / inputData.numOfPeople
+      });
+    }
   }, [inputData]);
 
   return (
