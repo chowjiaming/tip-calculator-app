@@ -5,7 +5,7 @@ import Attributions from "./Attributions/Attributions";
 
 export default function Main() {
   const [billAmount, setBillAmount] = useState(0);
-  const [tipPercentage, setTipPercentage] = useState(0);
+  const [tipPercentage, setTipPercentage] = useState(5);
   const [numOfPeople, setNumOfPeople] = useState(1);
   const [personalTipAmount, setPersonalTipAmount] = useState(0);
   const [totalTipAmount, setTotalTipAmount] = useState(0);

@@ -21,6 +21,7 @@ export default function Card(props) {
       <InputCard
         billAmount={billAmount}
         setBillAmount={setBillAmount}
+        tipPercentage={tipPercentage}
         setTipPercentage={setTipPercentage}
         numOfPeople={numOfPeople}
         setNumOfPeople={setNumOfPeople}
