@@ -33,6 +33,9 @@ export default function Card(props) {
         setPersonalTipAmount={setPersonalTipAmount}
         totalTipAmount={totalTipAmount}
         setTotalTipAmount={setTotalTipAmount}
+        setNumOfPeople={setNumOfPeople}
+        setBillAmount={setBillAmount}
+        setTipPercentage={setTipPercentage}
       />
     </div>
   );
