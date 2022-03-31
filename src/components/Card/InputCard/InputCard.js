@@ -28,18 +28,20 @@ export default function InputCard(props) {
       setNumOfPeople(1);
     } else if (!re.test(e.target.value)) {
       e.target.value = numOfPeople;
+    } else {
+      setNumOfPeople(e.target.value);
     }
-    setNumOfPeople(e.target.value);
   };
 
   const handleBillChange = (e) => {
     const re = /^\d+$/;
     if (!e.target.value) {
-      setBillAmount(1);
+      setBillAmount(0);
     } else if (!re.test(e.target.value)) {
       e.target.value = billAmount;
+    } else {
+      setBillAmount(e.target.value);
     }
-    setBillAmount(e.target.value);
   };
 
   let tipPercentageBoxes = tipPercetageOptions.map((percentage) => {
