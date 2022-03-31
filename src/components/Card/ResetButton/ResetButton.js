@@ -1,12 +1,8 @@
-import './ResetButton.css'
+import "./ResetButton.css";
 
 export default function ResetButton(props) {
-  const {
-    setBillAmount,
-    setTipPercentage,
-    setNumOfPeople
-  } = props;
-  
+  const { setBillAmount, setTipPercentage, setNumOfPeople } = props;
+
   const handleClick = (e) => {
     setBillAmount(0);
     setTipPercentage(0);
@@ -14,6 +10,8 @@ export default function ResetButton(props) {
   };
 
   return (
-    <div className="reset-button" onClick={handleClick}>Reset</div>
-  )
+    <div className="reset-button" onClick={handleClick}>
+      Reset
+    </div>
+  );
 }

@@ -2,13 +2,13 @@ import ResetButton from "../ResetButton/ResetButton";
 import "./ResultCard.css";
 
 export default function ResultCard(props) {
-  const { 
-      personalTipAmount, 
-      totalTipAmount, 
-      setBillAmount,
-      setTipPercentage,
-      setNumOfPeople
-    } = props;
+  const {
+    personalTipAmount,
+    totalTipAmount,
+    setBillAmount,
+    setTipPercentage,
+    setNumOfPeople,
+  } = props;
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -32,7 +32,7 @@ export default function ResultCard(props) {
         <h2 className="tip-result">{formatter.format(personalTipAmount)}</h2>
       </div>
 
-      <ResetButton 
+      <ResetButton
         setBillAmount={setBillAmount}
         setTipPercentage={setTipPercentage}
         setNumOfPeople={setNumOfPeople}

@@ -8,7 +8,7 @@ export default function InputCard(props) {
     numOfPeople,
     setNumOfPeople,
     setTipPercentage,
-    tipPercentage
+    tipPercentage,
   } = props;
 
   const tipPercetageOptions = [5, 10, 15, 20, 25];
@@ -23,33 +23,35 @@ export default function InputCard(props) {
   };
 
   const handlePeopleChange = (e) => {
-    const re = /^[0-9\b]+$/;
-    if (e.target.value === "" || !re.test(e.target.value)) {
-      // Don't know how to get previous target value
-      // Relying on previous state
-      e.target.value = numOfPeople + "";
+    const re = /^\d+$/;
+    if (!e.target.value) {
+      setNumOfPeople(1);
+    } else if (!re.test(e.target.value)) {
+      e.target.value = numOfPeople;
     }
     setNumOfPeople(e.target.value);
   };
 
   const handleBillChange = (e) => {
-    const re = /^[0-9\b]+$/;
-    if (e.target.value === "" || !re.test(e.target.value)) {
-      // Don't know how to get previous target value
-      // Relying on previous state
-      e.target.value = billAmount + "";
+    const re = /^\d+$/;
+    if (!e.target.value) {
+      setBillAmount(1);
+    } else if (!re.test(e.target.value)) {
+      e.target.value = billAmount;
     }
     setBillAmount(e.target.value);
   };
 
-  let tipPercentageBoxes = tipPercetageOptions.map(percentage => {
-    return <TipPercentageBox 
-              key={percentage} 
-              percentage={percentage} 
-              tipPercentage={tipPercentage}
-              handleClick={handleClick} 
-            />
-  })
+  let tipPercentageBoxes = tipPercetageOptions.map((percentage) => {
+    return (
+      <TipPercentageBox
+        key={percentage}
+        percentage={percentage}
+        tipPercentage={tipPercentage}
+        handleClick={handleClick}
+      />
+    );
+  });
 
   return (
     <div className="input-card">
