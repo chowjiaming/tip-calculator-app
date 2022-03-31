@@ -35,6 +35,7 @@ input {
   color: hsl(189, 41%, 97%);
   border-radius: 5px;
   padding: 0.5em;
+  cursor: pointer;
   background-color: hsl(183, 100%, 15%);
 }
 

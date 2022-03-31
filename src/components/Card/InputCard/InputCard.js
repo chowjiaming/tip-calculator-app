@@ -30,13 +30,18 @@ export default function InputCard(props) {
     setBillAmount(e.target.value);
   };
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
     <div className="input-card">
       <h4 className="bill">Bill</h4>
       <input
         type="text"
         className="bill-input"
-        placeholder="0"
+        placeholder={formatter.format(0)}
         onChange={handleBillChange}
       />
       <h4 className="select-tip">Select Tip %</h4>
