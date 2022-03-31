@@ -1,22 +1,25 @@
-.result-card {
-  background-color: hsl(183, 100%, 15%);
-  color: hsl(189, 41%, 97%);
-  border-radius: 0.8rem;
-  padding: 2em;
-  display: flex;
-  flex-direction: column;
+.input-card {
+  padding: 0.5em;
 }
 
-h4 {
-  color: hsl(184, 14%, 56%);
+.input-wrapper {
+  margin: 0.5em 0 1em 0;
+  position: relative;
+}
+
+.input-wrapper > img {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  transform: translateY(75%);
 }
 
 input {
   font: inherit;
+  text-align: right;
   border-style: none;
   border-radius: 0.3rem;
   padding: 0.6em;
-  margin: 0.5em 0 1em 0;
   width: 100%;
   color: hsl(183, 100%, 15%);
   background-color: hsl(189, 41%, 97%);
@@ -41,19 +44,10 @@ input {
 
 .active {
   background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
 }
 
 .custom {
   background-color: hsl(189, 41%, 97%);
-  color: hsl(184, 14%, 56%);
-}
-
-.tip-result-box {
-  padding: 1em 0;
-  display: flex;
-}
-
-.tip-text-box {
-  display: flex;
-  flex-direction: column;
+  color: hsl(186, 14%, 43%);
 }

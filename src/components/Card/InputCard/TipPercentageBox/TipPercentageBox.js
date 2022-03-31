@@ -1,6 +1,6 @@
 export default function TipPercentageBox(props) {
   const { percentage, tipPercentage, handleClick } = props;
-  const isBoxActive = percentage === tipPercentage;
+  const isBoxActive = Number(percentage) === tipPercentage;
 
   return (
     <div
@@ -8,7 +8,7 @@ export default function TipPercentageBox(props) {
       id={percentage}
       onClick={handleClick}
     >
-      {percentage}%
+      {`${percentage}%`}
     </div>
   );
 }

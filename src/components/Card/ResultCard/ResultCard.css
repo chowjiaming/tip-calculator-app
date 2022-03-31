@@ -1,5 +1,10 @@
-.input-card {
-  padding: 1em;
+.result-card {
+  background-color: hsl(183, 100%, 15%);
+  color: hsl(189, 41%, 97%);
+  border-radius: 0.8rem;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
 }
 
 .result-heading {
@@ -10,6 +15,16 @@
   color: hsl(184, 14%, 56%);
   letter-spacing: 0.1em;
   font-size: 0.7em;
+}
+
+.tip-result-box {
+  padding: 1em 0;
+  display: flex;
+}
+
+.tip-text-box {
+  display: flex;
+  flex-direction: column;
 }
 
 .tip-result {

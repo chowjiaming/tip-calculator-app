@@ -5,7 +5,7 @@ export default function ResetButton(props) {
 
   const handleClick = (e) => {
     setBillAmount(0);
-    setTipPercentage(0);
+    setTipPercentage(5);
     setNumOfPeople(1);
   };
 

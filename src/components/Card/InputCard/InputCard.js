@@ -11,12 +11,7 @@ export default function InputCard(props) {
     tipPercentage,
   } = props;
 
-  const tipPercetageOptions = [5, 10, 15, 20, 25];
-
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+  const tipPercetageOptions = ['5', '10', '15', '20', '25'];
 
   const handleClick = (e) => {
     setTipPercentage(parseInt(e.target.id));
@@ -25,7 +20,7 @@ export default function InputCard(props) {
   const handlePeopleChange = (e) => {
     const re = /^\d+$/;
     if (!e.target.value) {
-      setNumOfPeople(1);
+      setNumOfPeople(0);
     } else if (!re.test(e.target.value)) {
       e.target.value = numOfPeople;
     } else {
@@ -34,7 +29,7 @@ export default function InputCard(props) {
   };
 
   const handleBillChange = (e) => {
-    const re = /^\d+$/;
+    const re = /^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/;
     if (!e.target.value) {
       setBillAmount(0);
     } else if (!re.test(e.target.value)) {
@@ -44,7 +39,18 @@ export default function InputCard(props) {
     }
   };
 
-  let tipPercentageBoxes = tipPercetageOptions.map((percentage) => {
+  const handleCustomTip = (e) => {
+    const re = /^[1-9]$|^[1-9][0-9]$|^(100)$/
+    if (!e.target.value) {
+      setTipPercentage(0);
+    } else if (!re.test(e.target.value)) {
+      e.target.value = tipPercentage;
+    } else {
+      setTipPercentage(e.target.value);
+    }
+  }
+
+  const tipPercentageBoxes = tipPercetageOptions.map((percentage) => {
     return (
       <TipPercentageBox
         key={percentage}
@@ -58,25 +64,39 @@ export default function InputCard(props) {
   return (
     <div className="input-card">
       <h4 className="bill">Bill</h4>
-      <input
-        type="text"
-        className="bill-input"
-        placeholder={formatter.format(0)}
-        onChange={handleBillChange}
-      />
+      <div className="input-wrapper">
+        <img src="images/icon-dollar.svg" alt="icon-dollar" />
+        <input
+          type="text"
+          className="bill-input"
+          placeholder={0}
+          value={billAmount || ""}
+          onChange={handleBillChange}
+        />
+      </div>
+
       <h4 className="select-tip">Select Tip %</h4>
       <div className="tip-selector-box">
         {tipPercentageBoxes}
-        <div className="tip-percentage-box custom">Custom</div>
+        <input
+          className="tip-percentage-box custom"
+          placeholder="Custom"
+          // value={tipPercentage || ""}
+          onChange={handleCustomTip}
+        />
       </div>
 
       <h4 className="people">Number of People</h4>
-      <input
-        type="text"
-        className="number-of-people"
-        placeholder="1"
-        onChange={handlePeopleChange}
-      />
+      <div className="input-wrapper">
+        <img src="images/icon-person.svg" alt="icon-person" />
+        <input
+          type="text"
+          className="number-of-people"
+          placeholder="1"
+          value={numOfPeople || ""}
+          onChange={handlePeopleChange}
+        />
+      </div>
     </div>
   );
 }
