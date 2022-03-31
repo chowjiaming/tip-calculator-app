@@ -2,51 +2,65 @@ import TipPercentageBox from "./TipPercentageBox/TipPercentageBox";
 import "./InputCard.css";
 
 export default function InputCard(props) {
-  const {
-    billAmount,
-    setBillAmount,
-    numOfPeople,
-    setNumOfPeople,
-    setTipPercentage,
-    tipPercentage,
-  } = props;
+  const { inputData, setInputData } = props;
 
   const tipPercetageOptions = ['5', '10', '15', '20', '25'];
 
   const handleClick = (e) => {
-    setTipPercentage(parseInt(e.target.id));
+    setInputData(prevState => ({
+      ...prevState,
+      tipPercentage: parseInt(e.target.id)
+    }));
   };
 
   const handlePeopleChange = (e) => {
     const re = /^\d+$/;
     if (!e.target.value) {
-      setNumOfPeople(0);
+      setInputData(prevState => ({
+        ...prevState,
+        numOfPeople: 0
+      }));
     } else if (!re.test(e.target.value)) {
-      e.target.value = numOfPeople;
+      e.target.value = inputData.numOfPeople;
     } else {
-      setNumOfPeople(e.target.value);
+      setInputData(prevState => ({
+        ...prevState,
+        numOfPeople: e.target.value
+      }));
     }
   };
 
   const handleBillChange = (e) => {
     const re = /^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/;
     if (!e.target.value) {
-      setBillAmount(0);
+      setInputData(prevState => ({
+        ...prevState,
+        billAmount: 0
+      }));
     } else if (!re.test(e.target.value)) {
-      e.target.value = billAmount;
+      e.target.value = inputData.billAmount;
     } else {
-      setBillAmount(e.target.value);
+      setInputData(prevState => ({
+        ...prevState,
+        billAmount: e.target.value
+      }));
     }
   };
 
   const handleCustomTip = (e) => {
     const re = /^[1-9]$|^[1-9][0-9]$|^(100)$/
     if (!e.target.value) {
-      setTipPercentage(0);
+      setInputData(prevState => ({
+        ...prevState,
+        tipPercentage: 0
+      }));
     } else if (!re.test(e.target.value)) {
-      e.target.value = tipPercentage;
+      e.target.value = inputData.tipPercentage;
     } else {
-      setTipPercentage(e.target.value);
+      setInputData(prevState => ({
+        ...prevState,
+        tipPercentage: e.target.value
+      }));
     }
   }
 
@@ -55,7 +69,7 @@ export default function InputCard(props) {
       <TipPercentageBox
         key={percentage}
         percentage={percentage}
-        tipPercentage={tipPercentage}
+        inputData={inputData}
         handleClick={handleClick}
       />
     );
@@ -70,7 +84,7 @@ export default function InputCard(props) {
           type="text"
           className="bill-input"
           placeholder={0}
-          value={billAmount || ""}
+          value={inputData.billAmount || ""}
           onChange={handleBillChange}
         />
       </div>
@@ -93,7 +107,7 @@ export default function InputCard(props) {
           type="text"
           className="number-of-people"
           placeholder="1"
-          value={numOfPeople || ""}
+          value={inputData.numOfPeople || ""}
           onChange={handlePeopleChange}
         />
       </div>

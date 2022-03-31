@@ -4,39 +4,20 @@ import "./Card.css";
 
 export default function Card(props) {
   const {
-    billAmount,
-    setBillAmount,
-    tipPercentage,
-    setTipPercentage,
-    numOfPeople,
-    setNumOfPeople,
-    personalTipAmount,
-    setPersonalTipAmount,
-    totalTipAmount,
-    setTotalTipAmount,
+    inputData,
+    setInputData,
+    tipResult,
   } = props;
 
   return (
     <div className="card">
       <InputCard
-        billAmount={billAmount}
-        setBillAmount={setBillAmount}
-        tipPercentage={tipPercentage}
-        setTipPercentage={setTipPercentage}
-        numOfPeople={numOfPeople}
-        setNumOfPeople={setNumOfPeople}
+        inputData={inputData}
+        setInputData={setInputData}
       />
       <ResultCard
-        billAmount={billAmount}
-        numOfPeople={numOfPeople}
-        tipPercentage={tipPercentage}
-        personalTipAmount={personalTipAmount}
-        setPersonalTipAmount={setPersonalTipAmount}
-        totalTipAmount={totalTipAmount}
-        setTotalTipAmount={setTotalTipAmount}
-        setNumOfPeople={setNumOfPeople}
-        setBillAmount={setBillAmount}
-        setTipPercentage={setTipPercentage}
+        setInputData={setInputData}
+        tipResult={tipResult}
       />
     </div>
   );

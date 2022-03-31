@@ -4,32 +4,31 @@ import Card from "./Card/Card";
 import Attributions from "./Attributions/Attributions";
 
 export default function Main() {
-  const [billAmount, setBillAmount] = useState(0);
-  const [tipPercentage, setTipPercentage] = useState(5);
-  const [numOfPeople, setNumOfPeople] = useState(1);
-  const [personalTipAmount, setPersonalTipAmount] = useState(0);
-  const [totalTipAmount, setTotalTipAmount] = useState(0);
+  const [inputData, setInputData] = useState({
+    billAmount: 0,
+    tipPercentage: 5,
+    numOfPeople: 1,
+  });
+  const [tipResult, setTipResult] = useState({
+    personalTipAmount: 0,
+    totalTipAmount: 0,
+  })
 
   useEffect(() => {
-    setTotalTipAmount(billAmount * (tipPercentage * 0.01));
-    setPersonalTipAmount((billAmount * (tipPercentage * 0.01)) / numOfPeople);
-  }, [billAmount, numOfPeople, tipPercentage]);
+    setTipResult({
+      totalTipAmount: inputData.billAmount * (inputData.tipPercentage * 0.01),
+      personalTipAmount: (inputData.billAmount * (inputData.tipPercentage * 0.01)) / inputData.numOfPeople
+    });
+  }, [inputData]);
 
   return (
     <Fragment>
       <div className="container">
         <Title />
         <Card
-          billAmount={billAmount}
-          setBillAmount={setBillAmount}
-          tipPercentage={tipPercentage}
-          setTipPercentage={setTipPercentage}
-          numOfPeople={numOfPeople}
-          setNumOfPeople={setNumOfPeople}
-          personalTipAmount={personalTipAmount}
-          setPersonalTipAmount={setPersonalTipAmount}
-          totalTipAmount={totalTipAmount}
-          setTotalTipAmount={setTotalTipAmount}
+          inputData={inputData}
+          setInputData={setInputData}
+          tipResult={tipResult}
         />
       </div>
       <Attributions />

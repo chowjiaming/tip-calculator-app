@@ -25,12 +25,16 @@ input {
   background-color: hsl(189, 41%, 97%);
 }
 
+input:focus {
+  outline-color: hsl(184, 14%, 56%);
+}
+
 .tip-selector-box {
   padding: 1em 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-gap: 0.8em;
+  gap: 0.8em;
 }
 
 .tip-percentage-box {
@@ -50,4 +54,8 @@ input {
 .custom {
   background-color: hsl(189, 41%, 97%);
   color: hsl(186, 14%, 43%);
+}
+
+.error {
+  border: 1px solid #ffdddd;
 }

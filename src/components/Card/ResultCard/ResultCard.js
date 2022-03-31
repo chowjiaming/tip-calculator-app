@@ -3,11 +3,8 @@ import "./ResultCard.css";
 
 export default function ResultCard(props) {
   const {
-    personalTipAmount,
-    totalTipAmount,
-    setBillAmount,
-    setTipPercentage,
-    setNumOfPeople,
+    tipResult,
+    setInputData,
   } = props;
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -22,21 +19,16 @@ export default function ResultCard(props) {
           <h4 className="result-heading">Tip Amount</h4>
           <p className="per-person">/ person</p>
         </div>
-        <h2 className="tip-result">{formatter.format(totalTipAmount)}</h2>
+        <h2 className="tip-result">{formatter.format(tipResult.totalTipAmount)}</h2>
       </div>
       <div className="tip-result-box">
         <div className="tip-text-box">
           <h4 className="result-heading">Total</h4>
           <p className="per-person">/ person</p>
         </div>
-        <h2 className="tip-result">{formatter.format(personalTipAmount)}</h2>
+        <h2 className="tip-result">{formatter.format(tipResult.personalTipAmount)}</h2>
       </div>
-
-      <ResetButton
-        setBillAmount={setBillAmount}
-        setTipPercentage={setTipPercentage}
-        setNumOfPeople={setNumOfPeople}
-      />
+      <ResetButton setInputData={setInputData} />
     </div>
   );
 }
