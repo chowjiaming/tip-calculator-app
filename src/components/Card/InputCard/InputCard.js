@@ -3,7 +3,7 @@ import "./InputCard.css";
 
 export default function InputCard(props) {
   const { inputData, setInputData } = props;
-
+  console.log(inputData.numPeopleError)
   const tipPercetageOptions = ['5', '10', '15', '20', '25'];
 
   const handleClick = (e) => {
@@ -18,14 +18,20 @@ export default function InputCard(props) {
     if (!e.target.value) {
       setInputData(prevState => ({
         ...prevState,
-        numOfPeople: 0
+        numPeople: 0
       }));
     } else if (!re.test(e.target.value)) {
-      e.target.value = inputData.numOfPeople;
+      e.target.value = inputData.numPeople;
+    } else if (Number(e.target.value) > 100) {
+      setInputData(prevState => ({
+        ...prevState,
+        numPeopleError: true
+      }));
     } else {
       setInputData(prevState => ({
         ...prevState,
-        numOfPeople: e.target.value
+        numPeople: e.target.value,
+        numPeopleError: false
       }));
     }
   };
@@ -39,10 +45,16 @@ export default function InputCard(props) {
       }));
     } else if (!re.test(e.target.value)) {
       e.target.value = inputData.billAmount;
+    } else if (Number(e.target.value) >= 100000) {
+      setInputData(prevState => ({
+        ...prevState,
+        billAmountError: true
+      }));
     } else {
       setInputData(prevState => ({
         ...prevState,
-        billAmount: e.target.value
+        billAmount: e.target.value,
+        billAmountError: false
       }));
     }
   };
@@ -77,19 +89,28 @@ export default function InputCard(props) {
 
   return (
     <div className="input-card">
-      <h4 className="bill">Bill</h4>
+      <h2 className={`bill ${inputData.billAmountError ? "error-filter" : ""}`}>Bill</h2>
       <div className="input-wrapper">
-        <img src="images/icon-dollar.svg" alt="icon-dollar" />
+        {inputData.billAmountError
+          ? <span className="error-message">Cannot compute :))</span>
+          : null
+        }
+        <img
+          src="images/icon-dollar.svg"
+          alt="icon-dollar"
+          className={`${inputData.billAmountError ? "error-filter" : ""}`}
+        />
         <input
           type="text"
-          className="bill-input"
+          // className="bill-input"
+          className={`bill-input ${inputData.billAmountError ? "error" : ""}`}
           placeholder={0}
           value={inputData.billAmount || ""}
           onChange={handleBillChange}
         />
       </div>
 
-      <h4 className="select-tip">Select Tip %</h4>
+      <h2 className="select-tip">Select Tip %</h2>
       <div className="tip-selector-box">
         {tipPercentageBoxes}
         <input
@@ -100,14 +121,21 @@ export default function InputCard(props) {
         />
       </div>
 
-      <h4 className="people">Number of People</h4>
+      <h2 className={`people ${inputData.numPeopleError ? "error-filter" : ""}`}>Number of People</h2>
       <div className="input-wrapper">
-        <img src="images/icon-person.svg" alt="icon-person" />
+        {inputData.numPeopleError
+          ? <span className="error-message">Too many people :))</span>
+          : null
+        }
+        <img
+          src="images/icon-person.svg"
+          alt="icon-person"
+          className={`${inputData.numPeopleError ? "error-filter" : ""}`} />
         <input
           type="text"
-          className="number-of-people"
+          className={`number-of-people ${inputData.numPeopleError ? "error" : ""}`}
           placeholder={0}
-          value={inputData.numOfPeople || ""}
+          value={inputData.numPeople || ""}
           onChange={handlePeopleChange}
         />
       </div>

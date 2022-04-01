@@ -25,6 +25,7 @@ body {
   }
 }
 
-h4 {
+h2 {
+  font-size: inherit;
   color: hsl(184, 14%, 56%);
 }

@@ -16,17 +16,17 @@ export default function ResultCard(props) {
     <div className="result-card">
       <div className="tip-result-box">
         <div className="tip-text-box">
-          <h4 className="result-heading">Tip Amount</h4>
+          <h2 className="result-heading">Tip Amount</h2>
           <p className="per-person">/ person</p>
         </div>
         <h2 className="tip-result">{formatter.format(tipResult.totalTipAmount)}</h2>
       </div>
       <div className="tip-result-box">
         <div className="tip-text-box">
-          <h4 className="result-heading">Total</h4>
+          <h2 className="result-heading">Total</h2>
           <p className="per-person">/ person</p>
         </div>
-        <h2 className="tip-result">{formatter.format(tipResult.personalTipAmount)}</h2>
+        <h2 className="tip-result">{formatter.format(tipResult.tipPerPerson)}</h2>
       </div>
       <ResetButton setInputData={setInputData} />
     </div>

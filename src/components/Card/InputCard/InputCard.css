@@ -9,9 +9,9 @@
 
 .input-wrapper > img {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 10px;
-  transform: translateY(75%);
+  transform: translateY(-50%);
 }
 
 input {
@@ -56,6 +56,24 @@ input:focus {
   color: hsl(186, 14%, 43%);
 }
 
+.error-message {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  color: #ff9494;
+  font-size: 0.7em;
+}
+
+.error-filter {
+  filter: invert(98%) sepia(79%) saturate(1105%) hue-rotate(290deg)
+    brightness(97%) contrast(114%);
+}
+
 .error {
-  border: 1px solid #ffdddd;
+  background-color: #ffeeed;
+}
+
+.error:focus {
+  outline-color: #ff9494;
 }
