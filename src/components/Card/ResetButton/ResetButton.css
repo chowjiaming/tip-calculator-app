@@ -8,3 +8,8 @@
   color: hsl(183, 100%, 15%);
   background-color: hsl(172, 67%, 45%);
 }
+
+.reset-button:hover {
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(185, 41%, 84%);
+}
