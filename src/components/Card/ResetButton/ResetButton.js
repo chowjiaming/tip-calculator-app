@@ -7,9 +7,10 @@ export default function ResetButton(props) {
     setInputData({
       billAmount: 0,
       tipPercentage: 5,
+      customTipPercetage: null,
       numPeople: 0,
       numPeopleError: false,
-      billAmountError: false, 
+      billAmountError: false,
     });
   };
 

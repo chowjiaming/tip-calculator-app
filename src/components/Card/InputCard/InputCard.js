@@ -3,35 +3,34 @@ import "./InputCard.css";
 
 export default function InputCard(props) {
   const { inputData, setInputData } = props;
-  console.log(inputData.numPeopleError)
-  const tipPercetageOptions = ['5', '10', '15', '20', '25'];
+  const tipPercetageOptions = ["5", "10", "15", "20", "25"];
 
   const handleClick = (e) => {
-    setInputData(prevState => ({
+    setInputData((prevState) => ({
       ...prevState,
-      tipPercentage: parseInt(e.target.id)
+      tipPercentage: parseInt(e.target.id),
     }));
   };
 
   const handlePeopleChange = (e) => {
     const re = /^\d+$/;
     if (!e.target.value) {
-      setInputData(prevState => ({
+      setInputData((prevState) => ({
         ...prevState,
-        numPeople: 0
+        numPeople: 0,
       }));
     } else if (!re.test(e.target.value)) {
       e.target.value = inputData.numPeople;
     } else if (Number(e.target.value) > 100) {
-      setInputData(prevState => ({
+      setInputData((prevState) => ({
         ...prevState,
-        numPeopleError: true
+        numPeopleError: true,
       }));
     } else {
-      setInputData(prevState => ({
+      setInputData((prevState) => ({
         ...prevState,
         numPeople: e.target.value,
-        numPeopleError: false
+        numPeopleError: false,
       }));
     }
   };
@@ -39,42 +38,43 @@ export default function InputCard(props) {
   const handleBillChange = (e) => {
     const re = /^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/;
     if (!e.target.value) {
-      setInputData(prevState => ({
+      setInputData((prevState) => ({
         ...prevState,
-        billAmount: 0
+        billAmount: 0,
       }));
     } else if (!re.test(e.target.value)) {
       e.target.value = inputData.billAmount;
     } else if (Number(e.target.value) >= 100000) {
-      setInputData(prevState => ({
+      setInputData((prevState) => ({
         ...prevState,
-        billAmountError: true
+        billAmountError: true,
       }));
     } else {
-      setInputData(prevState => ({
+      setInputData((prevState) => ({
         ...prevState,
         billAmount: e.target.value,
-        billAmountError: false
+        billAmountError: false,
       }));
     }
   };
 
   const handleCustomTip = (e) => {
-    const re = /^[1-9]$|^[1-9][0-9]$|^(100)$/
+    const re = /^[1-9]$|^[1-9][0-9]$|^(100)$/;
     if (!e.target.value) {
-      setInputData(prevState => ({
+      setInputData((prevState) => ({
         ...prevState,
-        tipPercentage: 0
+        tipPercentage: 0,
       }));
     } else if (!re.test(e.target.value)) {
       e.target.value = inputData.tipPercentage;
     } else {
-      setInputData(prevState => ({
+      setInputData((prevState) => ({
         ...prevState,
-        tipPercentage: e.target.value
+        tipPercentage: e.target.value,
+        customTipPercentage: e.target.value,
       }));
     }
-  }
+  };
 
   const tipPercentageBoxes = tipPercetageOptions.map((percentage) => {
     return (
@@ -89,12 +89,13 @@ export default function InputCard(props) {
 
   return (
     <div className="input-card">
-      <h2 className={`bill ${inputData.billAmountError ? "error-filter" : ""}`}>Bill</h2>
+      <h2 className={`bill ${inputData.billAmountError ? "error-filter" : ""}`}>
+        Bill
+      </h2>
       <div className="input-wrapper">
-        {inputData.billAmountError
-          ? <span className="error-message">Cannot compute :))</span>
-          : null
-        }
+        {inputData.billAmountError ? (
+          <span className="error-message">Cannot compute :))</span>
+        ) : null}
         <img
           src="images/icon-dollar.svg"
           alt="icon-dollar"
@@ -102,7 +103,6 @@ export default function InputCard(props) {
         />
         <input
           type="text"
-          // className="bill-input"
           className={`bill-input ${inputData.billAmountError ? "error" : ""}`}
           placeholder={0}
           value={inputData.billAmount || ""}
@@ -116,24 +116,30 @@ export default function InputCard(props) {
         <input
           className="tip-percentage-box custom"
           placeholder="Custom"
-          // value={tipPercentage || ""}
+          value={inputData.customTipPercentage || ""}
           onChange={handleCustomTip}
         />
       </div>
 
-      <h2 className={`people ${inputData.numPeopleError ? "error-filter" : ""}`}>Number of People</h2>
+      <h2
+        className={`people ${inputData.numPeopleError ? "error-filter" : ""}`}
+      >
+        Number of People
+      </h2>
       <div className="input-wrapper">
-        {inputData.numPeopleError
-          ? <span className="error-message">Too many people :))</span>
-          : null
-        }
+        {inputData.numPeopleError ? (
+          <span className="error-message">Too many people :))</span>
+        ) : null}
         <img
           src="images/icon-person.svg"
           alt="icon-person"
-          className={`${inputData.numPeopleError ? "error-filter" : ""}`} />
+          className={`${inputData.numPeopleError ? "error-filter" : ""}`}
+        />
         <input
           type="text"
-          className={`number-of-people ${inputData.numPeopleError ? "error" : ""}`}
+          className={`number-of-people ${
+            inputData.numPeopleError ? "error" : ""
+          }`}
           placeholder={0}
           value={inputData.numPeople || ""}
           onChange={handlePeopleChange}
