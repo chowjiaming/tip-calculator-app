@@ -25,6 +25,11 @@ export default function Main() {
           (inputData.billAmount * (inputData.tipPercentage * 0.01)) /
           inputData.numPeople,
       });
+    } else if (!inputData.billAmount) {
+      setTipResult({
+        totalTipAmount: 0,
+        tipPerPerson: 0,
+      });
     }
   }, [inputData]);
 
