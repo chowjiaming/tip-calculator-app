@@ -11,6 +11,7 @@ export default function ResetButton(props) {
       numPeople: 0,
       numPeopleError: false,
       billAmountError: false,
+      tipPercentageError: false,
     });
   };
 

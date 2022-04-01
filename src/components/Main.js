@@ -11,6 +11,7 @@ export default function Main() {
     numPeople: 0,
     billAmountError: false,
     numPeopleError: false,
+    tipPercentageError: false,
   });
   const [tipResult, setTipResult] = useState({
     tipPerPerson: 0,

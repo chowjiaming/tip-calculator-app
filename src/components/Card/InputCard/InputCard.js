@@ -9,6 +9,8 @@ export default function InputCard(props) {
     setInputData((prevState) => ({
       ...prevState,
       tipPercentage: parseInt(e.target.id),
+      customTipPercentage: null,
+      tipPercentageError: false,
     }));
   };
 
@@ -64,14 +66,20 @@ export default function InputCard(props) {
       setInputData((prevState) => ({
         ...prevState,
         tipPercentage: 0,
+        customTipPercentage: 0,
       }));
     } else if (!re.test(e.target.value)) {
+      setInputData((prevState) => ({
+        ...prevState,
+        tipPercentageError: true,
+      }));
       e.target.value = inputData.tipPercentage;
     } else {
       setInputData((prevState) => ({
         ...prevState,
         tipPercentage: e.target.value,
         customTipPercentage: e.target.value,
+        tipPercentageError: false,
       }));
     }
   };
@@ -113,12 +121,19 @@ export default function InputCard(props) {
       <h2 className="select-tip">Select Tip %</h2>
       <div className="tip-selector-box">
         {tipPercentageBoxes}
-        <input
-          className="tip-percentage-box custom"
-          placeholder="Custom"
-          value={inputData.customTipPercentage || ""}
-          onChange={handleCustomTip}
-        />
+        <div className="tip-input-wrapper">
+          {inputData.tipPercentageError ? (
+            <span className="error-message">Calm down :))</span>
+          ) : null}
+          <input
+            className={`tip-percentage-box custom ${
+              inputData.tipPercentageError ? "error" : ""
+            }`}
+            placeholder="Custom"
+            value={inputData.customTipPercentage || ""}
+            onChange={handleCustomTip}
+          />
+        </div>
       </div>
 
       <h2
