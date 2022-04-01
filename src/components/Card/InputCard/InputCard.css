@@ -66,8 +66,8 @@ input:focus {
 }
 
 .error-filter {
-  filter: invert(98%) sepia(79%) saturate(1105%) hue-rotate(290deg)
-    brightness(97%) contrast(114%);
+  filter: invert(48%) sepia(7%) saturate(4593%) hue-rotate(317deg)
+    brightness(116%) contrast(99%);
 }
 
 .error {
