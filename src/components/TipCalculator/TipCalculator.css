@@ -1,4 +1,4 @@
-.card {
+.calculator {
   padding: 1.8em;
   border-radius: 1rem;
   background-color: hsl(0, 0%, 100%);
@@ -6,7 +6,8 @@
 }
 
 @media (min-width: 720px) {
-  .card {
+  .calculator {
+    max-width: 50rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2em;

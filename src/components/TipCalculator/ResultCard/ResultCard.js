@@ -1,13 +1,11 @@
+import { useContext } from "react";
+import TipContext from "../../../context/tipContext";
+import { currencyFormatter } from "../../../helpers/formatter";
 import ResetButton from "../ResetButton/ResetButton";
 import "./ResultCard.css";
 
-export default function ResultCard(props) {
-  const { tipResult, setInputData } = props;
-
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+export default function ResultCard() {
+  const { tipResult } = useContext(TipContext);
 
   return (
     <div className="result-card">
@@ -17,7 +15,7 @@ export default function ResultCard(props) {
           <p className="per-person">/ person</p>
         </div>
         <h2 className="tip-result">
-          {formatter.format(tipResult.totalTipAmount)}
+          {currencyFormatter.format(tipResult.totalTipAmount)}
         </h2>
       </div>
       <div className="tip-result-box">
@@ -26,10 +24,10 @@ export default function ResultCard(props) {
           <p className="per-person">/ person</p>
         </div>
         <h2 className="tip-result">
-          {formatter.format(tipResult.tipPerPerson)}
+          {currencyFormatter.format(tipResult.tipPerPerson)}
         </h2>
       </div>
-      <ResetButton setInputData={setInputData} />
+      <ResetButton />
     </div>
   );
 }
