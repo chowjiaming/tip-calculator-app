@@ -60,6 +60,11 @@
   transition: box-shadow 100ms ease-out;
 }
 
+.tip-percentage-box:active {
+  transform: translateY(1px);
+  transition: transform 100ms ease-out;
+}
+
 .active {
   background-color: hsl(172, 67%, 45%);
   color: hsl(183, 100%, 15%);
