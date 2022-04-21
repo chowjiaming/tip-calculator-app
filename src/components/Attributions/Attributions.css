@@ -1,11 +1,16 @@
 footer {
   font-size: 0.8em;
-  position: absolute;
-  bottom: 1rem;
-  right: 50%;
-  transform: translateX(50%);
+  color: hsl(186, 14%, 43%);
+  padding: 1rem 0 0.5rem 0;
+  text-align: center;
 }
 
 footer a {
-  color: hsl(228, 45%, 44%);
+  color: hsl(183, 100%, 15%);
+}
+
+@media (min-width: 720px) {
+  footer {
+    padding: 1rem 0;
+  }
 }

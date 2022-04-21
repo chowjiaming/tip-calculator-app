@@ -4,9 +4,11 @@ import "./TipCalculator.css";
 
 export default function TipCalculator() {
   return (
-    <main className="calculator">
-      <InputCard />
-      <ResultCard />
+    <main className="main">
+      <section className="main__calculator">
+        <InputCard />
+        <ResultCard />
+      </section>
     </main>
   );
 }

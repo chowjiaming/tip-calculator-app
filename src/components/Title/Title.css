@@ -1,11 +1,8 @@
 header {
-  position: absolute;
-  top: 1rem;
-  right: 50%;
-  transform: translateX(50%);
+  margin-top: 4rem;
 }
 
-.title {
+.title__text {
   color: hsl(186, 14%, 43%);
   line-height: 1em;
   letter-spacing: 0.3em;
@@ -14,6 +11,6 @@ header {
 
 @media (min-width: 720px) {
   header {
-    top: 6rem;
+    margin-top: 6rem;
   }
 }

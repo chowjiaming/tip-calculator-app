@@ -1,4 +1,10 @@
-.calculator {
+main {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.main__calculator {
   padding: 1.8em;
   border-radius: 1rem;
   background-color: hsl(0, 0%, 100%);
@@ -6,7 +12,9 @@
 }
 
 @media (min-width: 720px) {
-  .calculator {
+  .main__calculator {
+    /* offset the space taken by header padding */
+    /* margin-top: -6rem; */
     max-width: 50rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
