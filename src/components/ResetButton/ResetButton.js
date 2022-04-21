@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import TipContext from "../../../context/tipContext";
+import TipContext from "../../context/tipContext";
 import "./ResetButton.css";
 
 export default function ResetButton() {

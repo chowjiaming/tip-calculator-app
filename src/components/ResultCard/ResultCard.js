@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import TipContext from "../../../context/tipContext";
-import { currencyFormatter } from "../../../helpers/formatter";
+import TipContext from "../../context/tipContext";
+import { currencyFormatter } from "../../helpers/formatter";
 import ResetButton from "../ResetButton/ResetButton";
 import "./ResultCard.css";
 

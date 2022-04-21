@@ -1,5 +1,5 @@
-import InputCard from "./InputCard/InputCard";
-import ResultCard from "./ResultCard/ResultCard";
+import InputCard from "../../components/InputCard/InputCard";
+import ResultCard from "../../components/ResultCard/ResultCard";
 import "./TipCalculator.css";
 
 export default function TipCalculator() {

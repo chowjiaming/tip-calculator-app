@@ -1,7 +1,7 @@
 import { TipProvider } from "./context/tipContext";
-import Title from "./components/Title/Title";
-import TipCalculator from "./components/TipCalculator/TipCalculator";
-import Attributions from "./components/Attributions/Attributions";
+import Title from "./layout/Title/Title";
+import TipCalculator from "./layout/TipCalculator/TipCalculator";
+import Attributions from "./layout/Attributions/Attributions";
 import "./App.css";
 
 function App() {

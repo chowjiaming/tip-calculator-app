@@ -34,19 +34,7 @@
   outline-color: hsl(184, 14%, 56%);
 }
 
-.percentage {
-  padding: 1em 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0.8em;
-}
-
-.percentage__custom {
-  position: relative;
-}
-
-.input__input--error {
+.input__message--error {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -61,10 +49,10 @@
     hue-rotate(301deg) brightness(102%) contrast(100%);
 }
 
-.error {
+.input__input--error {
   background-color: #ffeeed;
 }
 
-.error:focus {
+.input__input--error:focus {
   outline-color: #ff9494;
 }
