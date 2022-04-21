@@ -8,22 +8,22 @@ export default function ResultCard() {
   const { tipResult } = useContext(TipContext);
 
   return (
-    <div className="result-card">
-      <div className="tip-result-box">
-        <div className="tip-text-box">
-          <h2 className="result-heading">Tip Amount</h2>
-          <p className="per-person">/ person</p>
+    <div className="result">
+      <div className="result__container">
+        <div className="result__container result__container--inner">
+          <h2 className="result__heading">Tip Amount</h2>
+          <p className="result__paragraph">/ person</p>
         </div>
-        <h2 className="tip-result">
+        <h2 className="result__value">
           {currencyFormatter.format(tipResult.totalTipAmount)}
         </h2>
       </div>
-      <div className="tip-result-box">
-        <div className="tip-text-box">
-          <h2 className="result-heading">Total</h2>
-          <p className="per-person">/ person</p>
+      <div className="result__container">
+        <div className="result__container result__container--inner">
+          <h2 className="result__heading">Total</h2>
+          <p className="result__paragraph">/ person</p>
         </div>
-        <h2 className="tip-result">
+        <h2 className="result__value">
           {currencyFormatter.format(tipResult.tipPerPerson)}
         </h2>
       </div>

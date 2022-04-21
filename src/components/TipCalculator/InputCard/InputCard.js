@@ -25,18 +25,24 @@ export default function InputCard() {
   });
 
   return (
-    <div className="input-card">
-      <h2 className={`bill ${inputData.billAmountError ? "error-filter" : ""}`}>
+    <div className="input">
+      <h2
+        className={`input__header ${
+          inputData.billAmountError ? "input__header--error" : ""
+        }`}
+      >
         Bill
       </h2>
-      <div className="input-wrapper">
+      <div className="input__wrapper">
         {inputData.billAmountError ? (
-          <span className="error-message">Cannot compute :))</span>
+          <span className="input__input--error">Cannot compute :))</span>
         ) : null}
         <img
           src="images/icon-dollar.svg"
           alt="icon-dollar"
-          className={`${inputData.billAmountError ? "error-filter" : ""}`}
+          className={`input__icon ${
+            inputData.billAmountError ? "input__icon--error" : ""
+          }`}
         />
         <input
           type="text"
@@ -47,15 +53,15 @@ export default function InputCard() {
         />
       </div>
 
-      <h2 className="select-tip">Select Tip %</h2>
-      <div className="tip-selector-box">
+      <h2 className="input__header">Select Tip %</h2>
+      <div className="percentage">
         {tipPercentageBoxes}
-        <div className="tip-input-wrapper">
+        <div className="percentage__custom">
           {inputData.tipPercentageError ? (
-            <span className="error-message">Calm down :))</span>
+            <span className="input__input--error">Calm down :))</span>
           ) : null}
           <input
-            className={`tip-percentage-box input__input custom ${
+            className={`input__input percentage__box percentage__box--custom ${
               inputData.tipPercentageError ? "error" : ""
             }`}
             placeholder="Custom"
@@ -66,18 +72,22 @@ export default function InputCard() {
       </div>
 
       <h2
-        className={`people ${inputData.numPeopleError ? "error-filter" : ""}`}
+        className={`input__header ${
+          inputData.numPeopleError ? "input__header--error" : ""
+        }`}
       >
         Number of People
       </h2>
-      <div className="input-wrapper">
+      <div className="input__wrapper">
         {inputData.numPeopleError ? (
-          <span className="error-message">Too many people :))</span>
+          <span className="input__input--error">Too many people :))</span>
         ) : null}
         <img
           src="images/icon-person.svg"
           alt="icon-person"
-          className={`${inputData.numPeopleError ? "error-filter" : ""}`}
+          className={`input__icon ${
+            inputData.numPeopleError ? "input__icon--error" : ""
+          }`}
         />
         <input
           type="text"

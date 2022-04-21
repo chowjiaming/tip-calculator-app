@@ -1,21 +1,17 @@
-.input-card {
+.input {
   padding: 0.5em;
 }
 
-.input-wrapper {
+.input__wrapper {
   margin: 0.5em 0 1em 0;
   position: relative;
 }
 
-.input-wrapper > img {
+.input__wrapper > img {
   position: absolute;
   top: 50%;
   left: 10px;
   transform: translateY(-50%);
-}
-
-.tip-input-wrapper {
-  position: relative;
 }
 
 .input__input {
@@ -38,7 +34,7 @@
   outline-color: hsl(184, 14%, 56%);
 }
 
-.tip-selector-box {
+.percentage {
   padding: 1em 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -46,46 +42,11 @@
   gap: 0.8em;
 }
 
-.tip-percentage-box {
-  text-align: center;
-  color: hsl(189, 41%, 97%);
-  border-radius: 5px;
-  padding: 0.5em;
-  cursor: pointer;
-  background-color: hsl(183, 100%, 15%);
+.percentage__custom {
+  position: relative;
 }
 
-.tip-percentage-box:hover {
-  box-shadow: 0 0 5px hsl(183, 100%, 15%);
-  transition: box-shadow 100ms ease-out;
-}
-
-.tip-percentage-box:active {
-  transform: translateY(1px);
-  transition: transform 100ms ease-out;
-}
-
-.active {
-  background-color: hsl(172, 67%, 45%);
-  color: hsl(183, 100%, 15%);
-}
-
-.active:hover {
-  box-shadow: 0 0 5px hsl(172, 67%, 45%);
-  transition: box-shadow 100ms ease-out;
-}
-
-.custom {
-  background-color: hsl(189, 41%, 97%);
-  color: hsl(186, 14%, 43%);
-}
-
-.custom:hover {
-  box-shadow: 0 0 5px hsl(184, 14%, 56%);
-  transition: box-shadow 100ms ease-out;
-}
-
-.error-message {
+.input__input--error {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -94,9 +55,10 @@
   font-size: 0.7em;
 }
 
-.error-filter {
-  filter: invert(48%) sepia(7%) saturate(4593%) hue-rotate(317deg)
-    brightness(116%) contrast(99%);
+.input__header--error,
+.input__icon--error {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(16%) saturate(3020%)
+    hue-rotate(301deg) brightness(102%) contrast(100%);
 }
 
 .error {

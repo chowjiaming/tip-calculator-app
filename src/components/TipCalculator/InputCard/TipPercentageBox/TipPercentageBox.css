@@ -1,0 +1,38 @@
+.percentage__box {
+  text-align: center;
+  color: hsl(189, 41%, 97%);
+  border-radius: 5px;
+  padding: 0.5em;
+  cursor: pointer;
+  background-color: hsl(183, 100%, 15%);
+}
+
+.percentage__box:hover {
+  box-shadow: 0 0 5px hsl(183, 100%, 15%);
+  transition: box-shadow 100ms ease-out;
+}
+
+.percentage__box:active {
+  transform: translateY(1px);
+  transition: transform 100ms ease-out;
+}
+
+.percentage__box--active {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+}
+
+.percentage__box--active:hover {
+  box-shadow: 0 0 5px hsl(172, 67%, 45%);
+  transition: box-shadow 100ms ease-out;
+}
+
+.percentage__box--custom {
+  background-color: hsl(189, 41%, 97%);
+  color: hsl(186, 14%, 43%);
+}
+
+.percentage__box--custom:hover {
+  box-shadow: 0 0 5px hsl(184, 14%, 56%);
+  transition: box-shadow 100ms ease-out;
+}

@@ -6,7 +6,7 @@ export default function ResetButton() {
   const { handleReset } = useContext(TipContext);
 
   return (
-    <div className="reset-button" onClick={handleReset}>
+    <div className="reset" onClick={handleReset}>
       Reset
     </div>
   );
