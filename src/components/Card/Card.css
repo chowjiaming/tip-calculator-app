@@ -2,6 +2,7 @@
   padding: 1.8em;
   border-radius: 1rem;
   background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 5px hsl(184, 14%, 56%);
 }
 
 @media (min-width: 720px) {

@@ -18,7 +18,7 @@
   position: relative;
 }
 
-input {
+.input__input {
   font: inherit;
   text-align: right;
   border-style: none;
@@ -29,7 +29,12 @@ input {
   background-color: hsl(189, 41%, 97%);
 }
 
-input:focus {
+.input__input:hover {
+  box-shadow: 0 0 5px hsl(184, 14%, 56%);
+  transition: box-shadow 100ms ease-in-out;
+}
+
+.input__input:focus {
   outline-color: hsl(184, 14%, 56%);
 }
 
@@ -50,14 +55,29 @@ input:focus {
   background-color: hsl(183, 100%, 15%);
 }
 
+.tip-percentage-box:hover {
+  box-shadow: 0 0 5px hsl(183, 100%, 15%);
+  transition: box-shadow 100ms ease-out;
+}
+
 .active {
   background-color: hsl(172, 67%, 45%);
   color: hsl(183, 100%, 15%);
 }
 
+.active:hover {
+  box-shadow: 0 0 5px hsl(172, 67%, 45%);
+  transition: box-shadow 100ms ease-out;
+}
+
 .custom {
   background-color: hsl(189, 41%, 97%);
   color: hsl(186, 14%, 43%);
+}
+
+.custom:hover {
+  box-shadow: 0 0 5px hsl(184, 14%, 56%);
+  transition: box-shadow 100ms ease-out;
 }
 
 .error-message {

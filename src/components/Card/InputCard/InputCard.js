@@ -111,7 +111,7 @@ export default function InputCard(props) {
         />
         <input
           type="text"
-          className={`bill-input ${inputData.billAmountError ? "error" : ""}`}
+          className={`input__input ${inputData.billAmountError ? "error" : ""}`}
           placeholder={0}
           value={inputData.billAmount || ""}
           onChange={handleBillChange}
@@ -126,7 +126,7 @@ export default function InputCard(props) {
             <span className="error-message">Calm down :))</span>
           ) : null}
           <input
-            className={`tip-percentage-box custom ${
+            className={`tip-percentage-box input__input custom ${
               inputData.tipPercentageError ? "error" : ""
             }`}
             placeholder="Custom"
@@ -152,7 +152,7 @@ export default function InputCard(props) {
         />
         <input
           type="text"
-          className={`number-of-people ${
+          className={`input__input ${
             inputData.numPeopleError ? "error" : ""
           }`}
           placeholder={0}

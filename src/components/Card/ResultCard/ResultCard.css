@@ -5,6 +5,7 @@
   padding: 2em;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0 5px #ccc;
 }
 
 .result-heading {
