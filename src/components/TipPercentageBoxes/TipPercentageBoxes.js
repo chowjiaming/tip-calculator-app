@@ -14,10 +14,12 @@ export default function TipPercentageBoxes() {
       {standardOptions}
       <div className="percentage__custom">
         {inputData.tipPercentageError ? (
-          <span className="input__message input__message--error">Calm down :))</span>
+          <span className="input__message input__message--error">
+            Calm down :))
+          </span>
         ) : null}
         <input
-          className={`input__input percentage__box percentage__box--custom ${
+          className={`percentage__box percentage__box--custom input__input ${
             inputData.tipPercentageError ? "input__input--error" : ""
           }`}
           placeholder="Custom"

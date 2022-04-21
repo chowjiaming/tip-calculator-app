@@ -4,7 +4,7 @@ import TipPercentageBoxes from "../TipPercentageBoxes/TipPercentageBoxes";
 import "./InputCard.css";
 
 export default function InputCard() {
-  const { inputData, handlePeopleChange, handleBillChange } =
+  const { inputData, errors, handlePeopleChange, handleBillChange } =
     useContext(TipContext);
 
   return (
@@ -17,21 +17,23 @@ export default function InputCard() {
         Bill
       </h2>
       <div className="input__wrapper">
-        {inputData.billAmountError ? (
+        {errors.bill ? (
           <span className="input__message input__message--error">
-            Cannot compute :))
+            {errors.bill}
           </span>
         ) : null}
         <img
           src="images/icon-dollar.svg"
           alt="icon-dollar"
           className={`input__icon ${
-            inputData.billAmountError ? "input__icon--error" : ""
+            errors.bill ? "input__icon--error" : ""
           }`}
         />
         <input
           type="text"
-          className={`input__input ${inputData.billAmountError ? "input__input--error" : ""}`}
+          className={`input__input ${
+            errors.bill ? "input__input--error" : ""
+          }`}
           placeholder={0}
           value={inputData.billAmount || ""}
           onChange={handleBillChange}
@@ -62,7 +64,9 @@ export default function InputCard() {
         />
         <input
           type="text"
-          className={`input__input ${inputData.numPeopleError ? "input__input--error" : ""}`}
+          className={`input__input ${
+            inputData.numPeopleError ? "input__input--error" : ""
+          }`}
           placeholder={0}
           value={inputData.numPeople || ""}
           onChange={handlePeopleChange}

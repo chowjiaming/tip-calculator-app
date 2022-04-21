@@ -32,6 +32,10 @@
   color: hsl(186, 14%, 43%);
 }
 
+.percentage__box.percentage__box--custom {
+  text-align: center;
+}
+
 .percentage__box--custom:hover {
   box-shadow: 0 0 5px hsl(184, 14%, 56%);
   transition: box-shadow 100ms ease-out;
