@@ -9,15 +9,15 @@ const initialInputState = {
     customTipPercentage: null,
     numPeople: 0,
     numPeopleError: false,
-    tipPercentageError: false,
   },
-  initialResultState = { tipPerPerson: 0, totalTipAmount: 0 };
+  initialResultState = { tipPerPerson: 0, totalTipAmount: 0 },
+  initialErrorState = { bill: "", tip: "", people: "" };
 
 export const TipProvider = ({ children }) => {
   const [inputData, setInputData] = useState(initialInputState);
   const [tipResult, setTipResult] = useState(initialResultState);
 
-  const [errors, setErrors] = useState({ bill: "", tip: "", people: "" });
+  const [errors, setErrors] = useState(initialErrorState);
 
   useEffect(() => {
     if (inputData.numPeople) {
@@ -33,15 +33,15 @@ export const TipProvider = ({ children }) => {
   }, [inputData]);
 
   const handleBillChange = (e) => {
-    if (!e.target.value || reNum.test(e.target.value)) {
-      if (e.target.value && !reBill.test(e.target.value)) {
-        setErrors({ ...errors, bill: "Dollars don't make cents :))" });
-      } else if (e.target.value && Number(e.target.value) >= 100000) {
-        setErrors({ ...errors, bill: "Cannot compute :))" });
-      } else {
-        setInputData({ ...inputData, billAmount: e.target.value });
-        setErrors({ ...errors, bill: "" });
-      }
+    if (e.target.value && !reNum.test(e.target.value)) {
+      setErrors({ ...errors, bill: "NaN :))" });
+    } else if (e.target.value && !reBill.test(e.target.value)) {
+      setErrors({ ...errors, bill: "Dollars don't make cents :))" });
+    } else if (e.target.value && Number(e.target.value) >= 100000) {
+      setErrors({ ...errors, bill: "Cannot compute :))" });
+    } else {
+      setInputData({ ...inputData, billAmount: e.target.value });
+      setErrors({ ...errors, bill: "" });
     }
   };
 
@@ -50,53 +50,42 @@ export const TipProvider = ({ children }) => {
       ...inputData,
       tipPercentage: parseInt(e.target.id),
       customTipPercentage: null,
-      tipPercentageError: false,
     });
+    setErrors({ ...errors, tip: "" });
   };
 
   const handleCustomTip = (e) => {
     if (!e.target.value) {
-      setInputData((prevState) => ({
-        ...prevState,
-        tipPercentage: 0,
-        customTipPercentage: 0,
-      }));
+      setInputData({ ...inputData, tipPercentage: 5, customTipPercentage: 0 });
+    } else if (!reNum.test(e.target.value)) {
+      setErrors({ ...errors, tip: "NaN :))" });
     } else if (!reTip.test(e.target.value)) {
-      setInputData((prevState) => ({
-        ...prevState,
-        tipPercentageError: true,
-      }));
-      e.target.value = inputData.tipPercentage;
+      setErrors({ ...errors, tip: "Calm down :))" });
     } else {
-      setInputData((prevState) => ({
-        ...prevState,
+      setInputData({
+        ...inputData,
         tipPercentage: e.target.value,
         customTipPercentage: e.target.value,
-        tipPercentageError: false,
-      }));
+      });
+      setErrors({ ...errors, tip: "" });
     }
   };
 
   const handlePeopleChange = (e) => {
     if (!e.target.value) {
-      setInputData((prevState) => ({
-        ...prevState,
-        numPeople: 0,
-      }));
+      setInputData({ ...inputData, numPeople: 0 });
+    } else if (!reNum.test(e.target.value)) {
+      setErrors({ ...errors, people: "NaN :))" });
     } else if (!rePeople.test(e.target.value)) {
-      e.target.value = inputData.numPeople;
-    } else if (Number(e.target.value) > 100) {
-      setInputData((prevState) => ({
-        ...prevState,
-        numPeopleError: true,
-      }));
+      setErrors({ ...errors, people: "Too many people :))" });
     } else {
-      setInputData((prevState) => ({
-        ...prevState,
-        numPeople: e.target.value,
-        numPeopleError: false,
-      }));
+      setInputData({ ...inputData, numPeople: e.target.value });
+      setErrors({ ...errors, people: "" });
     }
+  };
+
+  const handleInputBlur = () => {
+    setErrors(initialErrorState);
   };
 
   const handleReset = () => {
@@ -115,6 +104,7 @@ export const TipProvider = ({ children }) => {
         handleBillChange,
         handleCustomTip,
         handleReset,
+        handleInputBlur,
       }}
     >
       {children}

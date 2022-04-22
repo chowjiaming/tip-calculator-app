@@ -4,15 +4,18 @@ import TipPercentageBoxes from "../TipPercentageBoxes/TipPercentageBoxes";
 import "./InputCard.css";
 
 export default function InputCard() {
-  const { inputData, errors, handlePeopleChange, handleBillChange } =
-    useContext(TipContext);
+  const {
+    inputData,
+    errors,
+    handlePeopleChange,
+    handleBillChange,
+    handleInputBlur,
+  } = useContext(TipContext);
 
   return (
     <div className="input">
       <h2
-        className={`input__header ${
-          inputData.billAmountError ? "input__header--error" : ""
-        }`}
+        className={`input__header ${errors.bill ? "input__header--error" : ""}`}
       >
         Bill
       </h2>
@@ -25,51 +28,45 @@ export default function InputCard() {
         <img
           src="images/icon-dollar.svg"
           alt="icon-dollar"
-          className={`input__icon ${
-            errors.bill ? "input__icon--error" : ""
-          }`}
+          className={`input__icon ${errors.bill ? "input__icon--error" : ""}`}
         />
         <input
           type="text"
-          className={`input__input ${
-            errors.bill ? "input__input--error" : ""
-          }`}
+          className={`input__input ${errors.bill ? "input__input--error" : ""}`}
           placeholder={0}
           value={inputData.billAmount || ""}
           onChange={handleBillChange}
+          onBlur={handleInputBlur}
         />
       </div>
-
-      <h2 className="input__header">Select Tip %</h2>
       <TipPercentageBoxes />
       <h2
         className={`input__header ${
-          inputData.numPeopleError ? "input__header--error" : ""
+          errors.people ? "input__header--error" : ""
         }`}
       >
         Number of People
       </h2>
       <div className="input__wrapper">
-        {inputData.numPeopleError ? (
+        {errors.people ? (
           <span className="input__message input__message--error">
-            Too many people :))
+            {errors.people}
           </span>
         ) : null}
         <img
           src="images/icon-person.svg"
           alt="icon-person"
-          className={`input__icon ${
-            inputData.numPeopleError ? "input__icon--error" : ""
-          }`}
+          className={`input__icon ${errors.people ? "input__icon--error" : ""}`}
         />
         <input
           type="text"
           className={`input__input ${
-            inputData.numPeopleError ? "input__input--error" : ""
+            errors.people ? "input__input--error" : ""
           }`}
           placeholder={0}
           value={inputData.numPeople || ""}
           onChange={handlePeopleChange}
+          onBlur={handleInputBlur}
         />
       </div>
     </div>

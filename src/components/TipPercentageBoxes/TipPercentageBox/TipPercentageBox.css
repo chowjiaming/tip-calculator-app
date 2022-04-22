@@ -14,7 +14,7 @@
 
 .percentage__box:active {
   transform: translateY(1px);
-  transition: transform 100ms ease-out;
+  transition: transform 50ms ease-out;
 }
 
 .percentage__box--active {
