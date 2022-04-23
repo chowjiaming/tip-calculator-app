@@ -1,10 +1,10 @@
-import { TipProvider } from "./context/tipContext";
+import { TipProvider } from "./context/tipContext.js";
 import Title from "./layout/Title/Title";
 import TipCalculator from "./layout/TipCalculator/TipCalculator";
 import Attributions from "./layout/Attributions/Attributions";
 import "./App.css";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Title />
@@ -14,6 +14,6 @@ function App() {
       <Attributions />
     </div>
   );
-}
+};
 
 export default App;

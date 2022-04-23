@@ -4,7 +4,7 @@ import { currencyFormatter } from "../../helpers/formatter";
 import ResetButton from "../ResetButton/ResetButton";
 import "./ResultCard.css";
 
-export default function ResultCard() {
+const ResultCard: React.FC = () => {
   const { tipResult } = useContext(TipContext);
 
   return (
@@ -30,4 +30,6 @@ export default function ResultCard() {
       <ResetButton />
     </div>
   );
-}
+};
+
+export default ResultCard;

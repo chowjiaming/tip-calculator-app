@@ -1,6 +1,6 @@
 import "./Attributions.css";
 
-export default function Attributions() {
+const Attributions: React.FC = () => {
   return (
     <footer className="attribution">
       <div className="attribution__text">
@@ -26,4 +26,6 @@ export default function Attributions() {
       </div>
     </footer>
   );
-}
+};
+
+export default Attributions;
