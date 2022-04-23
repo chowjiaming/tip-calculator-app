@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import TipContext from '../../context/tipContext';
 import TipPercentageBoxes from '../TipPercentageBoxes/TipPercentageBoxes';
 import { TipCalculatorContextType } from '../../@types/tipCalculatorData';
+import iconDollar from '../../assets/icon-dollar.svg';
+import iconPerson from '../../assets/icon-person.svg';
 import './InputCard.css';
 
 export default function InputCard() {
@@ -28,7 +30,7 @@ export default function InputCard() {
           </span>
         ) : null}
         <img
-          src="images/icon-dollar.svg"
+          src={iconDollar}
           alt="icon-dollar"
           className={`input__icon ${
             tipCalculatorData.billError ? 'input__icon--error' : ''
@@ -60,7 +62,7 @@ export default function InputCard() {
           </span>
         ) : null}
         <img
-          src="images/icon-person.svg"
+          src={iconPerson}
           alt="icon-person"
           className={`input__icon ${
             tipCalculatorData.numPeopleError ? 'input__icon--error' : ''
