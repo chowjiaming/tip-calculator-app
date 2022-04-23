@@ -1,7 +1,7 @@
 export const currencyFormatter: Intl.NumberFormat = new Intl.NumberFormat(
-  "en-US",
+  'en-US',
   {
-    style: "currency",
-    currency: "USD",
-  }
+    style: 'currency',
+    currency: 'USD',
+  },
 );

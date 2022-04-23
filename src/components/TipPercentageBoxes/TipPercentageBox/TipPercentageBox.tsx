@@ -1,28 +1,32 @@
-import { useContext } from "react";
-import TipContext from "../../../context/tipContext";
-import "./TipPercentageBox.css";
+import { useContext } from 'react';
+import TipContext from '../../../context/tipContext';
+import { TipCalculatorContextType } from '../../../@types/tipCalculatorData';
+import './TipPercentageBox.css';
 
 interface Props {
   percentage: string;
 }
 
 const TipPercentageBox: React.FC<Props> = ({ percentage }) => {
-  const { inputData, setInputData, setErrors, errors } = useContext(TipContext);
-  const isBoxActive = Number(percentage) === inputData.tipPercentage;
+  const { tipCalculatorData, setTipCalculatorData } = useContext(
+    TipContext,
+  ) as TipCalculatorContextType;
+
+  const isBoxActive = Number(percentage) === tipCalculatorData.tipPercentage;
 
   const handleTipBoxClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-    setInputData({
-      ...inputData,
+    setTipCalculatorData({
+      ...tipCalculatorData,
       tipPercentage: parseInt(e.currentTarget.title),
-      customTipPercentage: null,
+      customTipPercentage: 0,
+      tipPercentError: '',
     });
-    setErrors({ ...errors, tip: "" });
   };
 
   return (
     <div
       className={`percentage__box ${
-        isBoxActive ? "percentage__box--active" : ""
+        isBoxActive ? 'percentage__box--active' : ''
       }`}
       id={percentage}
       title={percentage}

@@ -1,19 +1,21 @@
-import { useContext } from "react";
-import TipContext from "../../context/tipContext";
-import "./ResetButton.css";
-
-const initialInputState: object = {
-  billAmount: 0,
-  tipPercentage: 5,
-  customTipPercentage: null,
-  numPeople: 0,
-};
+import { useContext } from 'react';
+import TipContext from '../../context/tipContext';
+import { TipCalculatorContextType } from '../../@types/tipCalculatorData';
+import './ResetButton.css';
 
 const ResetButton: React.FC = () => {
-  const { setInputData } = useContext(TipContext);
+  const { tipCalculatorData, setTipCalculatorData } = useContext(
+    TipContext,
+  ) as TipCalculatorContextType;
 
   const handleReset = (): void => {
-    setInputData(initialInputState);
+    setTipCalculatorData({
+      ...tipCalculatorData,
+      billAmount: 0,
+      tipPercentage: 5,
+      customTipPercentage: 0,
+      numPeople: 0,
+    });
   };
 
   return (

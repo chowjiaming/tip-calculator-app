@@ -1,4 +1,4 @@
-import "./Title.css";
+import './Title.css';
 
 const Title: React.FC = () => {
   return (
