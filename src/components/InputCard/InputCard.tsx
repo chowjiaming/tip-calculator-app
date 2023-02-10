@@ -1,9 +1,8 @@
 import {useContext} from 'react';
+import Image from 'next/image';
 import TipContext from '../../context/tipContext';
 import TipPercentageBoxes from '../TipPercentageBoxes/TipPercentageBoxes';
 import {TipCalculatorContextType} from '../../@types/tipCalculatorData';
-import iconDollar from '../../assets/icon-dollar.svg';
-import iconPerson from '../../assets/icon-person.svg';
 import styles from '@/styles/InputCard.module.css';
 
 export default function InputCard() {
@@ -31,15 +30,20 @@ export default function InputCard() {
             {tipCalculatorData.billError}
           </span>
         ) : null}
-        <img
-          src={iconDollar}
-          alt="icon-dollar"
-          className={`${
+        <div
+          className={`${styles['input__icon']} ${
             tipCalculatorData.billError
               ? styles['input__icon--error']
               : undefined
           }`}
-        />
+        >
+          <Image
+            src="/svg/icon-dollar.svg"
+            alt="icon-dollar"
+            width={11}
+            height={17}
+          />
+        </div>
         <input
           type="text"
           className={`${styles['input__input']} ${
@@ -69,15 +73,20 @@ export default function InputCard() {
             {tipCalculatorData.numPeopleError}
           </span>
         ) : null}
-        <img
-          src={iconPerson}
-          alt="icon-person"
-          className={
+        <div
+          className={`${styles['img']} ${
             tipCalculatorData.numPeopleError
               ? styles['input__icon--error']
               : undefined
-          }
-        />
+          }`}
+        >
+          <Image
+            src="/svg/icon-person.svg"
+            alt="icon-person"
+            width={11}
+            height={17}
+          />
+        </div>
         <input
           type="text"
           className={`${styles['input__input']} ${
