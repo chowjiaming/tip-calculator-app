@@ -1,10 +1,10 @@
-import { createContext, useState } from 'react';
+import {createContext, useState} from 'react';
 import {
   TipCalculatorContextType,
   ITipCalculatorData,
 } from '../@types/tipCalculatorData';
 
-import { reNum, reTip, reBill, rePeople } from '../helpers/validators';
+import {reNum, reTip, reBill, rePeople} from '../helpers/validators';
 
 type TipContextProviderProps = {
   children: React.ReactNode;
@@ -12,26 +12,25 @@ type TipContextProviderProps = {
 
 const TipContext = createContext<TipCalculatorContextType | null>(null);
 
-export const TipProvider = ({ children }: TipContextProviderProps) => {
-  const [tipCalculatorData, setTipCalculatorData] = useState<
-    ITipCalculatorData
-  >({
-    billAmount: 0,
-    tipPercentage: 5,
-    customTipPercentage: 0,
-    numPeople: 0,
-    billError: '',
-    tipPercentError: '',
-    numPeopleError: '',
-  });
+export const TipProvider = ({children}: TipContextProviderProps) => {
+  const [tipCalculatorData, setTipCalculatorData] =
+    useState<ITipCalculatorData>({
+      billAmount: 0,
+      tipPercentage: 5,
+      customTipPercentage: 0,
+      numPeople: 0,
+      billError: '',
+      tipPercentError: '',
+      numPeopleError: '',
+    });
 
   const handleBillChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.value && !reNum.test(e.target.value)) {
-      setTipCalculatorData({ ...tipCalculatorData, billError: 'NaN :))' });
+      setTipCalculatorData({...tipCalculatorData, billError: 'NaN :))'});
     } else if (e.target.value && !reBill.test(e.target.value)) {
       setTipCalculatorData({
         ...tipCalculatorData,
-        billError: "Dollars don't make cents :))",
+        billError: 'Dollars do not make cents :))',
       });
     } else if (e.target.value && Number(e.target.value) >= 100000) {
       setTipCalculatorData({
@@ -49,9 +48,9 @@ export const TipProvider = ({ children }: TipContextProviderProps) => {
 
   const handlePeopleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (!e.target.value) {
-      setTipCalculatorData({ ...tipCalculatorData, numPeople: 0 });
+      setTipCalculatorData({...tipCalculatorData, numPeople: 0});
     } else if (!reNum.test(e.target.value)) {
-      setTipCalculatorData({ ...tipCalculatorData, numPeopleError: 'NaN :))' });
+      setTipCalculatorData({...tipCalculatorData, numPeopleError: 'NaN :))'});
     } else if (!rePeople.test(e.target.value)) {
       setTipCalculatorData({
         ...tipCalculatorData,
