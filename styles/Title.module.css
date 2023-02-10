@@ -10,7 +10,7 @@
 }
 
 @media (min-width: 720px) {
-  header {
+  .header {
     margin-top: 6rem;
   }
 }

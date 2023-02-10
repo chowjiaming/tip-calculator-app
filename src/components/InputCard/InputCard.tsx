@@ -40,7 +40,7 @@ export default function InputCard() {
           <Image
             src="/svg/icon-dollar.svg"
             alt="icon-dollar"
-            width={11}
+            width={12}
             height={17}
           />
         </div>
@@ -74,7 +74,7 @@ export default function InputCard() {
           </span>
         ) : null}
         <div
-          className={`${styles['img']} ${
+          className={`${styles['input__icon']} ${
             tipCalculatorData.numPeopleError
               ? styles['input__icon--error']
               : undefined
@@ -83,7 +83,7 @@ export default function InputCard() {
           <Image
             src="/svg/icon-person.svg"
             alt="icon-person"
-            width={11}
+            width={15}
             height={17}
           />
         </div>
