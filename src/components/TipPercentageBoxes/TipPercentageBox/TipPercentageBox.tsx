@@ -1,15 +1,15 @@
-import { useContext } from 'react';
+import {useContext} from 'react';
 import TipContext from '../../../context/tipContext';
-import { TipCalculatorContextType } from '../../../@types/tipCalculatorData';
-import './TipPercentageBox.css';
+import {TipCalculatorContextType} from '../../../@types/tipCalculatorData';
+import styles from '@/styles/TipPercentageBox.module.css';
 
 interface Props {
   percentage: string;
 }
 
-const TipPercentageBox: React.FC<Props> = ({ percentage }) => {
-  const { tipCalculatorData, setTipCalculatorData } = useContext(
-    TipContext,
+const TipPercentageBox: React.FC<Props> = ({percentage}) => {
+  const {tipCalculatorData, setTipCalculatorData} = useContext(
+    TipContext
   ) as TipCalculatorContextType;
 
   const isBoxActive = Number(percentage) === tipCalculatorData.tipPercentage;
@@ -25,8 +25,8 @@ const TipPercentageBox: React.FC<Props> = ({ percentage }) => {
 
   return (
     <div
-      className={`percentage__box ${
-        isBoxActive ? 'percentage__box--active' : ''
+      className={`${styles['percentage__box']} ${
+        isBoxActive ? styles['percentage__box--active'] : undefined
       }`}
       id={percentage}
       title={percentage}

@@ -1,13 +1,12 @@
-import './Attributions.css';
+import styles from '@/styles/Attributions.module.css';
 
 const Attributions: React.FC = () => {
   return (
-    <footer className="attribution">
-      <div className="attribution__text">
+    <footer className={styles['footer']}>
+      <div>
         Design inspired by{' '}
         <a
           href="https://www.frontendmentor.io?ref=challenge"
-          className="attribution__link"
           target="_blank"
           rel="noreferrer"
         >
@@ -16,7 +15,6 @@ const Attributions: React.FC = () => {
         . Coded by{' '}
         <a
           href="https://github.com/chowjiaming"
-          className="attribution__link"
           target="_blank"
           rel="noreferrer"
         >

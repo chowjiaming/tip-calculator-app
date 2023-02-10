@@ -1,19 +1,19 @@
-import { useContext, useEffect } from 'react';
+import {useContext, useEffect} from 'react';
 import TipContext from '../../context/tipContext';
-import { TipCalculatorContextType } from '../../@types/tipCalculatorData';
+import {TipCalculatorContextType} from '../../@types/tipCalculatorData';
 import ResultContext from '../../context/resultContext';
-import { TipResultContextType } from '../../@types/tipResultData';
-import { currencyFormatter } from '../../helpers/formatter';
+import {TipResultContextType} from '../../@types/tipResultData';
+import {currencyFormatter} from '../../helpers/formatter';
 import ResetButton from '../ResetButton/ResetButton';
-import './ResultCard.css';
+import styles from '@/styles/ResultCard.module.css';
 
 const ResultCard: React.FC = () => {
-  const { tipCalculatorData } = useContext(
-    TipContext,
+  const {tipCalculatorData} = useContext(
+    TipContext
   ) as TipCalculatorContextType;
 
-  const { tipResultData, setTipResultData } = useContext(
-    ResultContext,
+  const {tipResultData, setTipResultData} = useContext(
+    ResultContext
   ) as TipResultContextType;
 
   useEffect(() => {
@@ -36,22 +36,26 @@ const ResultCard: React.FC = () => {
   }, [tipCalculatorData, setTipResultData]);
 
   return (
-    <div className="result">
-      <div className="result__container">
-        <div className="result__container result__container--inner">
-          <h2 className="result__heading">Tip Amount</h2>
-          <p className="result__paragraph">/ person</p>
+    <div className={styles['result']}>
+      <div className={styles['result__container']}>
+        <div
+          className={`${styles['result__container']} ${styles['result__container--inner']}`}
+        >
+          <h2 className={styles['result__heading']}>Tip Amount</h2>
+          <p className={styles['result__paragraph']}>/ person</p>
         </div>
-        <h2 className="result__value">
+        <h2 className={styles['result__value']}>
           {currencyFormatter.format(tipResultData.totalTipAmount)}
         </h2>
       </div>
-      <div className="result__container">
-        <div className="result__container result__container--inner">
-          <h2 className="result__heading">Total</h2>
-          <p className="result__paragraph">/ person</p>
+      <div className={styles['result__container']}>
+        <div
+          className={`${styles['result__container']} ${styles['result__container--inner']}`}
+        >
+          <h2 className={styles['result__heading']}>Total</h2>
+          <p className={styles['result__paragraph']}>/ person</p>
         </div>
-        <h2 className="result__value">
+        <h2 className={styles['result__value']}>
           {currencyFormatter.format(tipResultData.tipPerPerson)}
         </h2>
       </div>

@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import {useContext} from 'react';
 import TipContext from '../../context/tipContext';
-import { TipCalculatorContextType } from '../../@types/tipCalculatorData';
-import './ResetButton.css';
+import {TipCalculatorContextType} from '../../@types/tipCalculatorData';
+import styles from '@/styles/ResetButton.module.css';
 
 const ResetButton: React.FC = () => {
-  const { tipCalculatorData, setTipCalculatorData } = useContext(
-    TipContext,
+  const {tipCalculatorData, setTipCalculatorData} = useContext(
+    TipContext
   ) as TipCalculatorContextType;
 
   const handleReset = (): void => {
@@ -19,7 +19,7 @@ const ResetButton: React.FC = () => {
   };
 
   return (
-    <div className="reset" onClick={handleReset}>
+    <div className={styles['reset']} onClick={handleReset}>
       Reset
     </div>
   );

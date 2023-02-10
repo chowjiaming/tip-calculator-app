@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import {useContext} from 'react';
 import TipContext from '../../context/tipContext';
 import TipPercentageBoxes from '../TipPercentageBoxes/TipPercentageBoxes';
-import { TipCalculatorContextType } from '../../@types/tipCalculatorData';
+import {TipCalculatorContextType} from '../../@types/tipCalculatorData';
 import iconDollar from '../../assets/icon-dollar.svg';
 import iconPerson from '../../assets/icon-person.svg';
-import './InputCard.css';
+import styles from '@/styles/InputCard.module.css';
 
 export default function InputCard() {
   const {
@@ -15,31 +15,37 @@ export default function InputCard() {
   } = useContext(TipContext) as TipCalculatorContextType;
 
   return (
-    <div className="input">
+    <div className={styles['input']}>
       <h2
-        className={`input__header ${
-          tipCalculatorData.billError ? 'input__header--error' : ''
-        }`}
+        className={
+          tipCalculatorData.billError
+            ? styles['input__header--error']
+            : undefined
+        }
       >
         Bill
       </h2>
-      <div className="input__wrapper">
+      <div className={styles['input__wrapper']}>
         {tipCalculatorData.billError ? (
-          <span className="input__message input__message--error">
+          <span className={styles['input__message--error']}>
             {tipCalculatorData.billError}
           </span>
         ) : null}
         <img
           src={iconDollar}
           alt="icon-dollar"
-          className={`input__icon ${
-            tipCalculatorData.billError ? 'input__icon--error' : ''
+          className={`${
+            tipCalculatorData.billError
+              ? styles['input__icon--error']
+              : undefined
           }`}
         />
         <input
           type="text"
-          className={`input__input ${
-            tipCalculatorData.billError ? 'input__input--error' : ''
+          className={`${styles['input__input']} ${
+            tipCalculatorData.billError
+              ? styles['input__input--error']
+              : undefined
           }`}
           placeholder={'0'}
           value={tipCalculatorData.billAmount || ''}
@@ -49,29 +55,35 @@ export default function InputCard() {
       </div>
       <TipPercentageBoxes />
       <h2
-        className={`input__header ${
-          tipCalculatorData.numPeopleError ? 'input__header--error' : ''
-        }`}
+        className={
+          tipCalculatorData.numPeopleError
+            ? styles['input__header--error']
+            : undefined
+        }
       >
         Number of People
       </h2>
-      <div className="input__wrapper">
+      <div className={styles['input__wrapper']}>
         {tipCalculatorData.numPeopleError ? (
-          <span className="input__message input__message--error">
+          <span className={styles['input__message--error']}>
             {tipCalculatorData.numPeopleError}
           </span>
         ) : null}
         <img
           src={iconPerson}
           alt="icon-person"
-          className={`input__icon ${
-            tipCalculatorData.numPeopleError ? 'input__icon--error' : ''
-          }`}
+          className={
+            tipCalculatorData.numPeopleError
+              ? styles['input__icon--error']
+              : undefined
+          }
         />
         <input
           type="text"
-          className={`input__input ${
-            tipCalculatorData.numPeopleError ? 'input__input--error' : ''
+          className={`${styles['input__input']} ${
+            tipCalculatorData.numPeopleError
+              ? styles['input__input--error']
+              : undefined
           }`}
           placeholder={'0'}
           value={tipCalculatorData.numPeople || ''}
