@@ -1,0 +1,6 @@
+dist
+node_modules
+yarn-debug.log
+package.json
+README.md
+yarn.lock
