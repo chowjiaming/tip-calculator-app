@@ -1,10 +1,7 @@
 import {createContext, useState} from 'react';
-import {
-  TipCalculatorContextType,
-  ITipCalculatorData,
-} from '../@types/tipCalculatorData';
+import {TipCalculatorContextType, ITipCalculatorData} from '@/src/types';
 
-import {reNum, reTip, reBill, rePeople} from '../helpers/validators';
+import {reNum, reTip, reBill, rePeople} from '@/src/helpers/validators';
 
 type TipContextProviderProps = {
   children: React.ReactNode;

@@ -1,8 +1,8 @@
 import {useContext} from 'react';
 import Image from 'next/image';
-import TipContext from '../../context/tipContext';
-import TipPercentageBoxes from '../TipPercentageBoxes/TipPercentageBoxes';
-import {TipCalculatorContextType} from '../../@types/tipCalculatorData';
+import TipContext from '@/src/context/tipContext';
+import TipPercentageBoxes from '@/src/components/TipPercentageBoxes/TipPercentageBoxes';
+import {TipCalculatorContextType} from '@/src/types';
 import styles from '@/styles/InputCard.module.css';
 
 export default function InputCard() {

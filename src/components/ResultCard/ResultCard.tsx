@@ -1,10 +1,9 @@
 import {useContext, useEffect} from 'react';
-import TipContext from '../../context/tipContext';
-import {TipCalculatorContextType} from '../../@types/tipCalculatorData';
-import ResultContext from '../../context/resultContext';
-import {TipResultContextType} from '../../@types/tipResultData';
-import {currencyFormatter} from '../../helpers/formatter';
-import ResetButton from '../ResetButton/ResetButton';
+import TipContext from '@/src/context/tipContext';
+import {TipCalculatorContextType, TipResultContextType} from '@/src/types';
+import ResultContext from '@/src/context/resultContext';
+import {currencyFormatter} from '@/src/helpers/formatter';
+import ResetButton from '@/src/components/ResetButton/ResetButton';
 import styles from '@/styles/ResultCard.module.css';
 
 const ResultCard: React.FC = () => {

@@ -18,3 +18,13 @@ export type TipCalculatorContextType = {
   handleCustomTip: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleInputBlur: () => void;
 };
+
+export interface ITipResultData {
+  tipPerPerson: number;
+  totalTipAmount: number;
+}
+
+export type TipResultContextType = {
+  tipResultData: ITipResultData;
+  setTipResultData: React.Dispatch<React.SetStateAction<ITipResultData>>;
+};

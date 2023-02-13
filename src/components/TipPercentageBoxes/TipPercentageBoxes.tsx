@@ -1,8 +1,8 @@
 import {Fragment, useContext} from 'react';
-import TipContext from '../../context/tipContext';
-import {TipCalculatorContextType} from '../../@types/tipCalculatorData';
-import {tipPercetageOptions} from '../../config/tipPercentageOptions';
-import TipPercentageBox from './TipPercentageBox/TipPercentageBox';
+import TipContext from '@/src/context/tipContext';
+import {TipCalculatorContextType} from '@/src/types';
+import {tipPercetageOptions} from '@/src/config/tipPercentageOptions';
+import TipPercentageBox from '@/src/components/TipPercentageBoxes/TipPercentageBox/TipPercentageBox';
 import styles from '@/styles/TipPercentageBoxes.module.css';
 import inputCardStyles from '@/styles/InputCard.module.css';
 import tipPercentageBoxStyles from '@/styles/TipPercentageBox.module.css';

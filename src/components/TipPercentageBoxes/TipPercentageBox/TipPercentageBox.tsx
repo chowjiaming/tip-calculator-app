@@ -1,6 +1,6 @@
 import {useContext} from 'react';
-import TipContext from '../../../context/tipContext';
-import {TipCalculatorContextType} from '../../../@types/tipCalculatorData';
+import TipContext from '@/src/context/tipContext';
+import {TipCalculatorContextType} from '@/src/types';
 import styles from '@/styles/TipPercentageBox.module.css';
 
 interface Props {
