@@ -1,16 +1,15 @@
 import {useContext} from 'react';
 import TipContext from '@/src/context/tipContext';
-import {TipCalculatorContextType} from '@/src/types';
 import styles from '@/styles/ResetButton.module.css';
 
 const ResetButton: React.FC = () => {
-  const {tipCalculatorData, setTipCalculatorData} = useContext(
-    TipContext
-  ) as TipCalculatorContextType;
+  const tipContext = useContext(TipContext);
+
+  if (!tipContext) throw new Error('TipContext is not defined');
 
   const handleReset = (): void => {
-    setTipCalculatorData({
-      ...tipCalculatorData,
+    tipContext.setTipCalculatorData({
+      ...tipContext.tipCalculatorData,
       billAmount: 0,
       tipPercentage: 5,
       customTipPercentage: 0,

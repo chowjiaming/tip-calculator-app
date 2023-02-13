@@ -1,6 +1,5 @@
 import {useContext} from 'react';
 import TipContext from '@/src/context/tipContext';
-import {TipCalculatorContextType} from '@/src/types';
 import styles from '@/styles/TipPercentageBox.module.css';
 
 interface Props {
@@ -8,15 +7,16 @@ interface Props {
 }
 
 const TipPercentageBox: React.FC<Props> = ({percentage}) => {
-  const {tipCalculatorData, setTipCalculatorData} = useContext(
-    TipContext
-  ) as TipCalculatorContextType;
+  const tipContext = useContext(TipContext);
 
-  const isBoxActive = Number(percentage) === tipCalculatorData.tipPercentage;
+  if (!tipContext) throw new Error('TipContext is not defined');
+
+  const isBoxActive =
+    Number(percentage) === tipContext.tipCalculatorData.tipPercentage;
 
   const handleTipBoxClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-    setTipCalculatorData({
-      ...tipCalculatorData,
+    tipContext.setTipCalculatorData({
+      ...tipContext.tipCalculatorData,
       tipPercentage: parseInt(e.currentTarget.title),
       customTipPercentage: 0,
       tipPercentError: '',

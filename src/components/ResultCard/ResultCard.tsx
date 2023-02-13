@@ -1,38 +1,35 @@
 import {useContext, useEffect} from 'react';
 import TipContext from '@/src/context/tipContext';
-import {TipCalculatorContextType, TipResultContextType} from '@/src/types';
 import ResultContext from '@/src/context/resultContext';
 import {currencyFormatter} from '@/src/helpers/formatter';
 import ResetButton from '@/src/components/ResetButton/ResetButton';
 import styles from '@/styles/ResultCard.module.css';
 
 const ResultCard: React.FC = () => {
-  const {tipCalculatorData} = useContext(
-    TipContext
-  ) as TipCalculatorContextType;
+  const tipContext = useContext(TipContext);
+  const resultContext = useContext(ResultContext);
 
-  const {tipResultData, setTipResultData} = useContext(
-    ResultContext
-  ) as TipResultContextType;
+  if (!tipContext || !resultContext)
+    throw new Error('Contexts are not defined');
 
   useEffect(() => {
-    if (tipCalculatorData.numPeople) {
-      setTipResultData({
+    if (tipContext.tipCalculatorData.numPeople) {
+      resultContext.setTipResultData({
         totalTipAmount:
-          tipCalculatorData.billAmount *
-          (tipCalculatorData.tipPercentage * 0.01),
+          tipContext.tipCalculatorData.billAmount *
+          (tipContext.tipCalculatorData.tipPercentage * 0.01),
         tipPerPerson:
-          (tipCalculatorData.billAmount *
-            (tipCalculatorData.tipPercentage * 0.01)) /
-          tipCalculatorData.numPeople,
+          (tipContext.tipCalculatorData.billAmount *
+            (tipContext.tipCalculatorData.tipPercentage * 0.01)) /
+          tipContext.tipCalculatorData.numPeople,
       });
-    } else if (!tipCalculatorData.billAmount) {
-      setTipResultData({
+    } else if (!tipContext.tipCalculatorData.billAmount) {
+      resultContext.setTipResultData({
         tipPerPerson: 0,
         totalTipAmount: 0,
       });
     }
-  }, [tipCalculatorData, setTipResultData]);
+  }, [tipContext.tipCalculatorData, resultContext]);
 
   return (
     <div className={styles['result']}>
@@ -44,7 +41,7 @@ const ResultCard: React.FC = () => {
           <p className={styles['result__paragraph']}>/ person</p>
         </div>
         <h2 className={styles['result__value']}>
-          {currencyFormatter.format(tipResultData.totalTipAmount)}
+          {currencyFormatter.format(resultContext.tipResultData.totalTipAmount)}
         </h2>
       </div>
       <div className={styles['result__container']}>
@@ -55,7 +52,7 @@ const ResultCard: React.FC = () => {
           <p className={styles['result__paragraph']}>/ person</p>
         </div>
         <h2 className={styles['result__value']}>
-          {currencyFormatter.format(tipResultData.tipPerPerson)}
+          {currencyFormatter.format(resultContext.tipResultData.tipPerPerson)}
         </h2>
       </div>
       <ResetButton />
