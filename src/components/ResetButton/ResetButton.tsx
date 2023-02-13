@@ -7,18 +7,8 @@ const ResetButton: React.FC = () => {
 
   if (!tipContext) throw new Error('TipContext is not defined');
 
-  const handleReset = (): void => {
-    tipContext.setTipCalculatorData({
-      ...tipContext.tipCalculatorData,
-      billAmount: 0,
-      tipPercentage: 5,
-      customTipPercentage: 0,
-      numPeople: 0,
-    });
-  };
-
   return (
-    <div className={styles['reset']} onClick={handleReset}>
+    <div className={styles['reset']} onClick={tipContext.handleReset}>
       Reset
     </div>
   );

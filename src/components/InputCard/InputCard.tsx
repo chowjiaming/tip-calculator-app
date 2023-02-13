@@ -13,7 +13,7 @@ export default function InputCard() {
     <div className={styles['input']}>
       <h2
         className={
-          tipContext.tipCalculatorData.billError
+          tipContext.tipCalculatorState.billError
             ? styles['input__header--error']
             : undefined
         }
@@ -21,14 +21,14 @@ export default function InputCard() {
         Bill
       </h2>
       <div className={styles['input__wrapper']}>
-        {tipContext.tipCalculatorData.billError ? (
+        {tipContext.tipCalculatorState.billError ? (
           <span className={styles['input__message--error']}>
-            {tipContext.tipCalculatorData.billError}
+            {tipContext.tipCalculatorState.billError}
           </span>
         ) : null}
         <div
           className={`${styles['input__icon']} ${
-            tipContext.tipCalculatorData.billError
+            tipContext.tipCalculatorState.billError
               ? styles['input__icon--error']
               : undefined
           }`}
@@ -43,12 +43,12 @@ export default function InputCard() {
         <input
           type="text"
           className={`${styles['input__input']} ${
-            tipContext.tipCalculatorData.billError
+            tipContext.tipCalculatorState.billError
               ? styles['input__input--error']
               : undefined
           }`}
           placeholder={'0'}
-          value={tipContext.tipCalculatorData.billAmount || ''}
+          value={tipContext.tipCalculatorState.billAmount || ''}
           onChange={tipContext.handleBillChange}
           onBlur={tipContext.handleInputBlur}
         />
@@ -56,7 +56,7 @@ export default function InputCard() {
       <TipPercentageBoxes />
       <h2
         className={
-          tipContext.tipCalculatorData.numPeopleError
+          tipContext.tipCalculatorState.numberOfPeopleError
             ? styles['input__header--error']
             : undefined
         }
@@ -64,14 +64,14 @@ export default function InputCard() {
         Number of People
       </h2>
       <div className={styles['input__wrapper']}>
-        {tipContext.tipCalculatorData.numPeopleError ? (
+        {tipContext.tipCalculatorState.numberOfPeopleError ? (
           <span className={styles['input__message--error']}>
-            {tipContext.tipCalculatorData.numPeopleError}
+            {tipContext.tipCalculatorState.numberOfPeopleError}
           </span>
         ) : null}
         <div
           className={`${styles['input__icon']} ${
-            tipContext.tipCalculatorData.numPeopleError
+            tipContext.tipCalculatorState.numberOfPeopleError
               ? styles['input__icon--error']
               : undefined
           }`}
@@ -86,12 +86,12 @@ export default function InputCard() {
         <input
           type="text"
           className={`${styles['input__input']} ${
-            tipContext.tipCalculatorData.numPeopleError
+            tipContext.tipCalculatorState.numberOfPeopleError
               ? styles['input__input--error']
               : undefined
           }`}
           placeholder={'0'}
-          value={tipContext.tipCalculatorData.numPeople || ''}
+          value={tipContext.tipCalculatorState.numberOfPeople || ''}
           onChange={tipContext.handlePeopleChange}
           onBlur={tipContext.handleInputBlur}
         />

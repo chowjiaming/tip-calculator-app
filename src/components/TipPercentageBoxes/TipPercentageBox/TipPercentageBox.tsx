@@ -12,16 +12,7 @@ const TipPercentageBox: React.FC<Props> = ({percentage}) => {
   if (!tipContext) throw new Error('TipContext is not defined');
 
   const isBoxActive =
-    Number(percentage) === tipContext.tipCalculatorData.tipPercentage;
-
-  const handleTipBoxClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-    tipContext.setTipCalculatorData({
-      ...tipContext.tipCalculatorData,
-      tipPercentage: parseInt(e.currentTarget.title),
-      customTipPercentage: 0,
-      tipPercentError: '',
-    });
-  };
+    Number(percentage) === tipContext.tipCalculatorState.tipPercentage;
 
   return (
     <div
@@ -30,7 +21,7 @@ const TipPercentageBox: React.FC<Props> = ({percentage}) => {
       }`}
       id={percentage}
       title={percentage}
-      onClick={handleTipBoxClick}
+      onClick={tipContext.handleTipBoxClick}
     >
       {`${percentage}%`}
     </div>

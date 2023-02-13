@@ -1,112 +1,67 @@
-import {createContext, useState} from 'react';
-import {TipCalculatorContextType, ITipCalculatorData} from '@/src/types';
+import {createContext, useReducer} from 'react';
+import {
+  initialTipCalculatorState,
+  tipCalculatorReducer,
+  TipCalculatorState,
+} from '@/src/utils/tipCalculatorReducer';
 
-import {reNum, reTip, reBill, rePeople} from '@/src/helpers/validators';
+// import {reNum, reTip, reBill, rePeople} from '@/src/helpers/validators';
 
 type TipContextProviderProps = {
   children: React.ReactNode;
 };
 
+type TipCalculatorContextType = {
+  tipCalculatorState: TipCalculatorState;
+  handleBillChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlePeopleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleCustomTip: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputBlur: () => void;
+  handleTipBoxClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  handleReset: () => void;
+};
+
 const TipContext = createContext<TipCalculatorContextType | null>(null);
 
 export const TipProvider = ({children}: TipContextProviderProps) => {
-  const [tipCalculatorData, setTipCalculatorData] =
-    useState<ITipCalculatorData>({
-      billAmount: 0,
-      tipPercentage: 5,
-      customTipPercentage: 0,
-      numPeople: 0,
-      billError: '',
-      tipPercentError: '',
-      numPeopleError: '',
-    });
-
+  const [tipCalculatorState, dispatch] = useReducer(
+    tipCalculatorReducer,
+    initialTipCalculatorState
+  );
   const handleBillChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.value && !reNum.test(e.target.value)) {
-      setTipCalculatorData({...tipCalculatorData, billError: 'NaN :))'});
-    } else if (e.target.value && !reBill.test(e.target.value)) {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        billError: 'Dollars do not make cents :))',
-      });
-    } else if (e.target.value && Number(e.target.value) >= 100000) {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        billError: 'Cannot compute :))',
-      });
-    } else {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        billAmount: Number(e.target.value),
-        billError: '',
-      });
-    }
+    dispatch({type: 'UPDATE_BILL', payload: Number(e.target.value)});
   };
 
   const handlePeopleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!e.target.value) {
-      setTipCalculatorData({...tipCalculatorData, numPeople: 0});
-    } else if (!reNum.test(e.target.value)) {
-      setTipCalculatorData({...tipCalculatorData, numPeopleError: 'NaN :))'});
-    } else if (!rePeople.test(e.target.value)) {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        numPeopleError: 'Too many people :))',
-      });
-    } else {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        numPeople: Number(e.target.value),
-        numPeopleError: '',
-      });
-    }
+    dispatch({type: 'UPDATE_PEOPLE', payload: Number(e.target.value)});
   };
 
   const handleCustomTip = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!e.target.value) {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        tipPercentage: 5,
-        customTipPercentage: 0,
-      });
-    } else if (!reNum.test(e.target.value)) {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        tipPercentError: 'NaN :))',
-      });
-    } else if (!reTip.test(e.target.value)) {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        tipPercentError: 'Calm down :))',
-      });
-    } else {
-      setTipCalculatorData({
-        ...tipCalculatorData,
-        tipPercentage: Number(e.target.value),
-        customTipPercentage: Number(e.target.value),
-        tipPercentError: '',
-      });
-    }
+    dispatch({type: 'UPDATE_CUSTOM_TIP', payload: Number(e.target.value)});
   };
 
   const handleInputBlur = (): void => {
-    setTipCalculatorData({
-      ...tipCalculatorData,
-      billError: '',
-      tipPercentError: '',
-      numPeopleError: '',
-    });
+    dispatch({type: 'INPUT_BLUR'});
+  };
+
+  const handleTipBoxClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+    dispatch({type: 'UPDATE_TIP', payload: parseInt(e.currentTarget.title)});
+  };
+
+  const handleReset = (): void => {
+    dispatch({type: 'RESET'});
   };
 
   return (
     <TipContext.Provider
       value={{
-        tipCalculatorData,
-        setTipCalculatorData,
+        tipCalculatorState,
         handleBillChange,
         handlePeopleChange,
         handleCustomTip,
         handleInputBlur,
+        handleTipBoxClick,
+        handleReset,
       }}
     >
       {children}

@@ -21,7 +21,7 @@ const TipPercentageBoxes: React.FC = () => {
     <Fragment>
       <h2
         className={
-          tipContext.tipCalculatorData.billError
+          tipContext.tipCalculatorState.billError
             ? inputCardStyles['input__header--error']
             : undefined
         }
@@ -31,21 +31,21 @@ const TipPercentageBoxes: React.FC = () => {
       <div className={styles['percentage']}>
         {standardOptions}
         <div className={styles['percentage__custom']}>
-          {tipContext.tipCalculatorData.tipPercentError ? (
+          {tipContext.tipCalculatorState.tipPercentageError ? (
             <span className={inputCardStyles['input__message--error']}>
-              {tipContext.tipCalculatorData.tipPercentError}
+              {tipContext.tipCalculatorState.tipPercentageError}
             </span>
           ) : null}
           <input
             className={`${tipPercentageBoxStyles['percentage__box']} ${
               tipPercentageBoxStyles['percentage__box--custom']
             } ${inputCardStyles['input__input']} ${
-              tipContext.tipCalculatorData.tipPercentError
+              tipContext.tipCalculatorState.tipPercentageError
                 ? inputCardStyles['input__input--error']
                 : undefined
             }`}
             placeholder="Custom"
-            value={tipContext.tipCalculatorData.customTipPercentage || ''}
+            value={tipContext.tipCalculatorState.customTipPercentage || ''}
             onChange={tipContext.handleCustomTip}
             onBlur={tipContext.handleInputBlur}
           />
