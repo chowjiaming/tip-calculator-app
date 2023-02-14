@@ -25,7 +25,7 @@ export function TipPercentageBoxes(): JSX.Element {
   return (
     <>
       <h2
-        className={`input__header ${
+        class={`input__header ${
           tipContext.tipCalculatorState.tipPercentageError
             ? 'input__header--error'
             : ''
@@ -33,18 +33,18 @@ export function TipPercentageBoxes(): JSX.Element {
       >
         Select Tip %
       </h2>
-      <div className="percentage">
+      <div class="percentage">
         {tipPercetageOptions.map((percentage) => (
           <TipPercentageBox key={percentage} percentage={percentage} />
         ))}
-        <div className="percentage__custom">
+        <div class="percentage__custom">
           {tipContext.tipCalculatorState.tipPercentageError ? (
-            <span className="input__message input__message--error">
+            <span class="input__message input__message--error">
               {tipContext.tipCalculatorState.tipPercentageError}
             </span>
           ) : null}
           <input
-            className={`percentage__box percentage__box--custom input__input ${
+            class={`percentage__box percentage__box--custom input__input ${
               tipContext.tipCalculatorState.tipPercentageError
                 ? 'input__input--error'
                 : ''

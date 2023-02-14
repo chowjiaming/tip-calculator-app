@@ -25,9 +25,7 @@ export function TipPercentageBox({percentage}: Props): JSX.Element {
 
   return (
     <div
-      className={`percentage__box ${
-        isBoxActive ? 'percentage__box--active' : ''
-      }`}
+      class={`percentage__box ${isBoxActive ? 'percentage__box--active' : ''}`}
       title={`${percentage}%`}
       onClick={handleTipBoxClick}
     >

@@ -12,7 +12,7 @@ export function ResetButton(): JSX.Element {
   };
 
   return (
-    <div className="reset" onClick={handleReset}>
+    <div class="reset" onClick={handleReset}>
       Reset
     </div>
   );

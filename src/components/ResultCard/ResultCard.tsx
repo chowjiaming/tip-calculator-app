@@ -10,22 +10,22 @@ export function ResultCard(): JSX.Element {
   if (!tipContext) throw new Error('Contexts are not defined');
 
   return (
-    <div className="result">
-      <div className="result__container">
-        <div className="result__container result__container--inner">
-          <h2 className="result__heading">Tip Amount</h2>
-          <p className="result__paragraph">/ person</p>
+    <div class="result">
+      <div class="result__container">
+        <div class="result__container result__container--inner">
+          <h2 class="result__heading">Tip Amount</h2>
+          <p class="result__paragraph">/ person</p>
         </div>
-        <h2 className="result__value">
+        <h2 class="result__value">
           {currencyFormatter.format(tipContext.tipCalculatorState.tipPerPerson)}
         </h2>
       </div>
-      <div className="result__container">
-        <div className="result__container result__container--inner">
-          <h2 className="result__heading">Total</h2>
-          <p className="result__paragraph">/ person</p>
+      <div class="result__container">
+        <div class="result__container result__container--inner">
+          <h2 class="result__heading">Total</h2>
+          <p class="result__paragraph">/ person</p>
         </div>
-        <h2 className="result__value">
+        <h2 class="result__value">
           {currencyFormatter.format(
             tipContext.tipCalculatorState.totalBillPerPerson
           )}

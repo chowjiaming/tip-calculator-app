@@ -7,7 +7,7 @@ import './app.css';
 
 export function App(): JSX.Element {
   return (
-    <div className="app-container">
+    <div class="app-container">
       <Title />
       <TipProvider>
         <TipCalculator />

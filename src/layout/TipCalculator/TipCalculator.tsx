@@ -5,8 +5,8 @@ import './TipCalculator.css';
 
 export function TipCalculator(): JSX.Element {
   return (
-    <main className="main">
-      <section className="main__calculator">
+    <main class="main">
+      <section class="main__calculator">
         <InputCard />
         <ResultCard />
       </section>

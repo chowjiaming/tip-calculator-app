@@ -3,8 +3,8 @@ import './Attributions.css';
 
 export function Attributions(): JSX.Element {
   return (
-    <footer className="attribution">
-      <div className="attribution__text">
+    <footer class="attribution">
+      <div class="attribution__text">
         Design inspired by{' '}
         <a
           href="https://www.frontendmentor.io?ref=challenge"

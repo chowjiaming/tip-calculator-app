@@ -33,30 +33,30 @@ export function InputCard(): JSX.Element {
   };
 
   return (
-    <div className="input">
+    <div class="input">
       <h2
-        className={`input__header ${
+        class={`input__header ${
           tipContext.tipCalculatorState.billError ? 'input__header--error' : ''
         }`}
       >
         Bill
       </h2>
-      <div className="input__wrapper">
+      <div class="input__wrapper">
         {tipContext.tipCalculatorState.billError ? (
-          <span className="input__message input__message--error">
+          <span class="input__message input__message--error">
             {tipContext.tipCalculatorState.billError}
           </span>
         ) : null}
         <img
           src="/svg/icon-dollar.svg"
           alt="icon-dollar"
-          className={`input__icon ${
+          class={`input__icon ${
             tipContext.tipCalculatorState.billError ? 'input__icon--error' : ''
           }`}
         />
         <input
           type="text"
-          className={`input__input ${
+          class={`input__input ${
             tipContext.tipCalculatorState.billError ? 'input__input--error' : ''
           }`}
           placeholder={'0'}
@@ -67,7 +67,7 @@ export function InputCard(): JSX.Element {
       </div>
       <TipPercentageBoxes />
       <h2
-        className={`input__header ${
+        class={`input__header ${
           tipContext.tipCalculatorState.numberOfPeopleError
             ? 'input__header--error'
             : ''
@@ -75,16 +75,16 @@ export function InputCard(): JSX.Element {
       >
         Number of People
       </h2>
-      <div className="input__wrapper">
+      <div class="input__wrapper">
         {tipContext.tipCalculatorState.numberOfPeopleError ? (
-          <span className="input__message input__message--error">
+          <span class="input__message input__message--error">
             {tipContext.tipCalculatorState.numberOfPeopleError}
           </span>
         ) : null}
         <img
           src="/svg/icon-person.svg"
           alt="icon-person"
-          className={`input__icon ${
+          class={`input__icon ${
             tipContext.tipCalculatorState.numberOfPeopleError
               ? 'input__icon--error'
               : ''
@@ -92,7 +92,7 @@ export function InputCard(): JSX.Element {
         />
         <input
           type="text"
-          className={`input__input ${
+          class={`input__input ${
             tipContext.tipCalculatorState.numberOfPeopleError
               ? 'input__input--error'
               : ''
