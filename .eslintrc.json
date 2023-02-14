@@ -9,15 +9,7 @@
     "sourceType": "module",
     "jsxPragma": null
   },
-  "plugins": ["@typescript-eslint", "react", "react-hooks"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "preact", "prettier"],
   "rules": {
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
@@ -26,6 +18,7 @@
   },
   "settings": {
     "react": {
+      "pragma": "h",
       "version": "detect"
     }
   }
