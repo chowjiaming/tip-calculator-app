@@ -1,7 +1,4 @@
-import {
-  TipCalculatorActions,
-  TipCalculatorState,
-} from '@/src/utils/tipCalculatorTypes';
+import {TipCalculatorActions, TipCalculatorState} from './tipCalculatorTypes';
 
 export const initialTipCalculatorState: TipCalculatorState = {
   billAmount: 0,

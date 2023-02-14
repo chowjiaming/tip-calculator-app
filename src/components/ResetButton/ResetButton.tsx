@@ -1,6 +1,7 @@
-import {useContext} from 'react';
-import {TipContext} from '@/src/context/tipContext';
-import styles from '@/styles/ResetButton.module.css';
+import type {JSX} from 'preact/jsx-runtime';
+import {useContext} from 'preact/hooks';
+import {TipContext} from '../../context/tipContext';
+import './ResetButton.css';
 
 export function ResetButton(): JSX.Element {
   const tipContext = useContext(TipContext);
@@ -11,7 +12,7 @@ export function ResetButton(): JSX.Element {
   };
 
   return (
-    <div className={styles['reset']} onClick={handleReset}>
+    <div className="reset" onClick={handleReset}>
       Reset
     </div>
   );

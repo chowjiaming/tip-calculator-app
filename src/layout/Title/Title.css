@@ -1,4 +1,4 @@
-.header {
+header {
   margin-top: 1rem;
 }
 
@@ -10,7 +10,7 @@
 }
 
 @media (min-width: 720px) {
-  .header {
+  header {
     margin-top: 6rem;
   }
 }

@@ -1,16 +1,16 @@
-.footer {
+footer {
   font-size: 0.8em;
   color: hsl(186, 14%, 43%);
   padding: 1rem 0 0.5rem 0;
   text-align: center;
 }
 
-.footer a {
+footer a {
   color: hsl(183, 100%, 15%);
 }
 
 @media (min-width: 720px) {
-  .footer {
+  footer {
     padding: 1rem 0;
   }
 }

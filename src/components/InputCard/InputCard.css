@@ -7,9 +7,9 @@
   position: relative;
 }
 
-.input__icon {
+.input__wrapper > img {
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 10px;
   transform: translateY(-50%);
 }

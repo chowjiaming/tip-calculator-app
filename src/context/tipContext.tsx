@@ -1,23 +1,24 @@
-import type {Dispatch} from 'react';
-import {createContext, useReducer} from 'react';
+import type {JSX} from 'preact/jsx-runtime';
+import {createContext} from 'preact';
+import {useReducer} from 'preact/hooks';
 import type {
   TipCalculatorState,
   TipCalculatorActions,
-} from '@/src/utils/tipCalculatorTypes';
+} from '../utils/tipCalculatorTypes';
 import {
   initialTipCalculatorState,
   tipCalculatorReducer,
-} from '@/src/utils/tipCalculatorReducer';
+} from '../utils/tipCalculatorReducer';
 
 type TipCalculatorContextType = {
   tipCalculatorState: TipCalculatorState;
-  dispatch: Dispatch<TipCalculatorActions>;
+  dispatch: (action: TipCalculatorActions) => void;
 };
 
 export const TipContext = createContext<TipCalculatorContextType | null>(null);
 
 type TipContextProviderProps = {
-  children: React.ReactNode;
+  children: JSX.Element;
 };
 export const TipProvider = ({children}: TipContextProviderProps) => {
   const [tipCalculatorState, dispatch] = useReducer(

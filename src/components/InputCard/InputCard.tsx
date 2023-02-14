@@ -1,20 +1,29 @@
-import {useContext} from 'react';
-import {TipContext} from '@/src/context/tipContext';
-import {TipPercentageBoxes} from '@/src/components/TipPercentageBoxes/TipPercentageBoxes';
-import Image from 'next/image';
-import styles from '@/styles/InputCard.module.css';
+import type {JSX} from 'preact/jsx-runtime';
+import {useContext} from 'preact/hooks';
+import {TipContext} from '../../context/tipContext';
+import {TipPercentageBoxes} from '../TipPercentageBoxes/TipPercentageBoxes';
+import './InputCard.css';
 
 export function InputCard(): JSX.Element {
   const tipContext = useContext(TipContext);
   if (!tipContext) throw new Error('Context is not defined');
 
-  const handleBillChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    tipContext.dispatch({type: 'UPDATE_BILL', payload: Number(e.target.value)});
+  const handleBillChange = (
+    e: JSX.TargetedEvent<HTMLInputElement, Event>
+  ): void => {
+    tipContext.dispatch({
+      type: 'UPDATE_BILL',
+      // strange preact bug, need to cast to HTMLInputElement
+      payload: Number((e.target as HTMLInputElement).value),
+    });
   };
-  const handlePeopleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handlePeopleChange = (
+    e: JSX.TargetedEvent<HTMLInputElement, Event>
+  ): void => {
     tipContext.dispatch({
       type: 'UPDATE_PEOPLE',
-      payload: Number(e.target.value),
+      // strange preact bug, need to cast to HTMLInputElement
+      payload: Number((e.target as HTMLInputElement).value),
     });
   };
   const handleInputBlur = (): void => {
@@ -22,42 +31,31 @@ export function InputCard(): JSX.Element {
   };
 
   return (
-    <div className={styles['input']}>
+    <div className="input">
       <h2
-        className={
-          tipContext.tipCalculatorState.billError
-            ? styles['input__header--error']
-            : ''
-        }
+        className={`input__header ${
+          tipContext.tipCalculatorState.billError ? 'input__header--error' : ''
+        }`}
       >
         Bill
       </h2>
-      <div className={styles['input__wrapper']}>
+      <div className="input__wrapper">
         {tipContext.tipCalculatorState.billError ? (
-          <span className={styles['input__message--error']}>
+          <span className="input__message input__message--error">
             {tipContext.tipCalculatorState.billError}
           </span>
         ) : null}
-        <div
-          className={`${styles['input__icon']} ${
-            tipContext.tipCalculatorState.billError
-              ? styles['input__icon--error']
-              : ''
+        <img
+          src="/svg/icon-dollar.svg"
+          alt="icon-dollar"
+          className={`input__icon ${
+            tipContext.tipCalculatorState.billError ? 'input__icon--error' : ''
           }`}
-        >
-          <Image
-            src="/svg/icon-dollar.svg"
-            alt="icon-dollar"
-            width={12}
-            height={17}
-          />
-        </div>
+        />
         <input
           type="text"
-          className={`${styles['input__input']} ${
-            tipContext.tipCalculatorState.billError
-              ? styles['input__input--error']
-              : ''
+          className={`input__input ${
+            tipContext.tipCalculatorState.billError ? 'input__input--error' : ''
           }`}
           placeholder={'0'}
           value={tipContext.tipCalculatorState.billAmount || ''}
@@ -67,39 +65,34 @@ export function InputCard(): JSX.Element {
       </div>
       <TipPercentageBoxes />
       <h2
-        className={
+        className={`input__header ${
           tipContext.tipCalculatorState.numberOfPeopleError
-            ? styles['input__header--error']
+            ? 'input__header--error'
             : ''
-        }
+        }`}
       >
         Number of People
       </h2>
-      <div className={styles['input__wrapper']}>
+      <div className="input__wrapper">
         {tipContext.tipCalculatorState.numberOfPeopleError ? (
-          <span className={styles['input__message--error']}>
+          <span className="input__message input__message--error">
             {tipContext.tipCalculatorState.numberOfPeopleError}
           </span>
         ) : null}
-        <div
-          className={`${styles['input__icon']} ${
+        <img
+          src="/svg/icon-person.svg"
+          alt="icon-person"
+          className={`input__icon ${
             tipContext.tipCalculatorState.numberOfPeopleError
-              ? styles['input__icon--error']
+              ? 'input__icon--error'
               : ''
           }`}
-        >
-          <Image
-            src="/svg/icon-person.svg"
-            alt="icon-person"
-            width={15}
-            height={17}
-          />
-        </div>
+        />
         <input
           type="text"
-          className={`${styles['input__input']} ${
+          className={`input__input ${
             tipContext.tipCalculatorState.numberOfPeopleError
-              ? styles['input__input--error']
+              ? 'input__input--error'
               : ''
           }`}
           placeholder={'0'}

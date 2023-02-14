@@ -1,11 +1,12 @@
-import {InputCard} from '@/src/components/InputCard/InputCard';
-import {ResultCard} from '@/src/components/ResultCard/ResultCard';
-import styles from '@/styles/TipCalculator.module.css';
+import type {JSX} from 'preact/jsx-runtime';
+import {InputCard} from '../../components/InputCard/InputCard';
+import {ResultCard} from '../../components/ResultCard/ResultCard';
+import './TipCalculator.css';
 
 export function TipCalculator(): JSX.Element {
   return (
-    <main className={styles['main']}>
-      <section className={styles['main__calculator']}>
+    <main className="main">
+      <section className="main__calculator">
         <InputCard />
         <ResultCard />
       </section>

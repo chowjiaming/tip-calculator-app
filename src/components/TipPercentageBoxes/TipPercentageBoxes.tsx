@@ -1,19 +1,20 @@
-import {useContext} from 'react';
-import {TipContext} from '@/src/context/tipContext';
-import {tipPercetageOptions} from '@/src/config/tipPercentageOptions';
-import {TipPercentageBox} from '@/src/components/TipPercentageBoxes/TipPercentageBox/TipPercentageBox';
-import styles from '@/styles/TipPercentageBoxes.module.css';
-import inputCardStyles from '@/styles/InputCard.module.css';
-import tipPercentageBoxStyles from '@/styles/TipPercentageBox.module.css';
+import type {JSX} from 'preact/jsx-runtime';
+import {useContext} from 'preact/hooks';
+import {TipContext} from '../../context/tipContext';
+import {tipPercetageOptions} from '../../config/tipPercentageOptions';
+import {TipPercentageBox} from './TipPercentageBox/TipPercentageBox';
+import './TipPercentageBoxes.css';
 
 export function TipPercentageBoxes(): JSX.Element {
   const tipContext = useContext(TipContext);
   if (!tipContext) throw new Error('Context is not defined');
 
-  const handleCustomTip = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleCustomTip = (
+    e: JSX.TargetedEvent<HTMLInputElement, Event>
+  ): void => {
     tipContext.dispatch({
       type: 'UPDATE_CUSTOM_TIP',
-      payload: Number(e.target.value),
+      payload: Number((e.target as HTMLInputElement).value),
     });
   };
   const handleInputBlur = (): void => {
@@ -23,30 +24,28 @@ export function TipPercentageBoxes(): JSX.Element {
   return (
     <>
       <h2
-        className={
+        className={`input__header ${
           tipContext.tipCalculatorState.tipPercentageError
-            ? inputCardStyles['input__header--error']
+            ? 'input__header--error'
             : ''
-        }
+        }`}
       >
         Select Tip %
       </h2>
-      <div className={styles['percentage']}>
+      <div className="percentage">
         {tipPercetageOptions.map((percentage) => (
           <TipPercentageBox key={percentage} percentage={percentage} />
         ))}
-        <div className={styles['percentage__custom']}>
+        <div className="percentage__custom">
           {tipContext.tipCalculatorState.tipPercentageError ? (
-            <span className={inputCardStyles['input__message--error']}>
+            <span className="input__message input__message--error">
               {tipContext.tipCalculatorState.tipPercentageError}
             </span>
           ) : null}
           <input
-            className={`${tipPercentageBoxStyles['percentage__box']} ${
-              tipPercentageBoxStyles['percentage__box--custom']
-            } ${inputCardStyles['input__input']} ${
+            className={`percentage__box percentage__box--custom input__input ${
               tipContext.tipCalculatorState.tipPercentageError
-                ? inputCardStyles['input__input--error']
+                ? 'input__input--error'
                 : ''
             }`}
             placeholder="Custom"

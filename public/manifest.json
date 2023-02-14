@@ -1,6 +1,6 @@
 {
   "short_name": "Tip Calculator",
-  "name": "Tip Calculator App Built with React and Typescript",
+  "name": "Tip Calculator App Built with Preact and Typescript",
   "icons": [
     {
       "src": "logo.svg",
