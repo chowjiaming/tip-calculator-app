@@ -14,6 +14,7 @@ export function TipPercentageBoxes(): JSX.Element {
   ): void => {
     tipContext.dispatch({
       type: 'UPDATE_CUSTOM_TIP',
+      // strange preact bug, need to cast to HTMLInputElement
       payload: Number((e.target as HTMLInputElement).value),
     });
   };
@@ -50,7 +51,7 @@ export function TipPercentageBoxes(): JSX.Element {
             }`}
             placeholder="Custom"
             value={tipContext.tipCalculatorState.customTipPercentage || ''}
-            onChange={handleCustomTip}
+            onInput={handleCustomTip}
             onBlur={handleInputBlur}
           />
         </div>

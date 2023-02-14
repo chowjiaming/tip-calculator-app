@@ -8,6 +8,8 @@ export function InputCard(): JSX.Element {
   const tipContext = useContext(TipContext);
   if (!tipContext) throw new Error('Context is not defined');
 
+  console.log('tipContext.tipCalculatorState', tipContext.tipCalculatorState);
+
   const handleBillChange = (
     e: JSX.TargetedEvent<HTMLInputElement, Event>
   ): void => {
@@ -59,7 +61,7 @@ export function InputCard(): JSX.Element {
           }`}
           placeholder={'0'}
           value={tipContext.tipCalculatorState.billAmount || ''}
-          onChange={handleBillChange}
+          onInput={handleBillChange}
           onBlur={handleInputBlur}
         />
       </div>
@@ -97,7 +99,7 @@ export function InputCard(): JSX.Element {
           }`}
           placeholder={'0'}
           value={tipContext.tipCalculatorState.numberOfPeople || ''}
-          onChange={handlePeopleChange}
+          onInput={handlePeopleChange}
           onBlur={handleInputBlur}
         />
       </div>
