@@ -14,12 +14,7 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
-    "react/react-in-jsx-scope": "off"
-  },
-  "settings": {
-    "react": {
-      "pragma": "h",
-      "version": "detect"
-    }
+    "react/react-in-jsx-scope": "off",
+    "jest/no-deprecated-functions": "off"
   }
 }
