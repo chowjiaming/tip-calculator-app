@@ -1,13 +1,25 @@
 import {useContext} from 'react';
+import {TipContext} from '@/src/context/tipContext';
+import {TipPercentageBoxes} from '@/src/components/TipPercentageBoxes/TipPercentageBoxes';
 import Image from 'next/image';
-import TipContext from '@/src/context/tipContext';
-import TipPercentageBoxes from '@/src/components/TipPercentageBoxes/TipPercentageBoxes';
 import styles from '@/styles/InputCard.module.css';
 
-export default function InputCard() {
+export function InputCard(): JSX.Element {
   const tipContext = useContext(TipContext);
+  if (!tipContext) throw new Error('Context is not defined');
 
-  if (!tipContext) throw new Error('TipContext is not defined');
+  const handleBillChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    tipContext.dispatch({type: 'UPDATE_BILL', payload: Number(e.target.value)});
+  };
+  const handlePeopleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    tipContext.dispatch({
+      type: 'UPDATE_PEOPLE',
+      payload: Number(e.target.value),
+    });
+  };
+  const handleInputBlur = (): void => {
+    tipContext.dispatch({type: 'INPUT_BLUR'});
+  };
 
   return (
     <div className={styles['input']}>
@@ -15,7 +27,7 @@ export default function InputCard() {
         className={
           tipContext.tipCalculatorState.billError
             ? styles['input__header--error']
-            : undefined
+            : ''
         }
       >
         Bill
@@ -30,7 +42,7 @@ export default function InputCard() {
           className={`${styles['input__icon']} ${
             tipContext.tipCalculatorState.billError
               ? styles['input__icon--error']
-              : undefined
+              : ''
           }`}
         >
           <Image
@@ -45,12 +57,12 @@ export default function InputCard() {
           className={`${styles['input__input']} ${
             tipContext.tipCalculatorState.billError
               ? styles['input__input--error']
-              : undefined
+              : ''
           }`}
           placeholder={'0'}
           value={tipContext.tipCalculatorState.billAmount || ''}
-          onChange={tipContext.handleBillChange}
-          onBlur={tipContext.handleInputBlur}
+          onChange={handleBillChange}
+          onBlur={handleInputBlur}
         />
       </div>
       <TipPercentageBoxes />
@@ -58,7 +70,7 @@ export default function InputCard() {
         className={
           tipContext.tipCalculatorState.numberOfPeopleError
             ? styles['input__header--error']
-            : undefined
+            : ''
         }
       >
         Number of People
@@ -73,7 +85,7 @@ export default function InputCard() {
           className={`${styles['input__icon']} ${
             tipContext.tipCalculatorState.numberOfPeopleError
               ? styles['input__icon--error']
-              : undefined
+              : ''
           }`}
         >
           <Image
@@ -88,12 +100,12 @@ export default function InputCard() {
           className={`${styles['input__input']} ${
             tipContext.tipCalculatorState.numberOfPeopleError
               ? styles['input__input--error']
-              : undefined
+              : ''
           }`}
           placeholder={'0'}
           value={tipContext.tipCalculatorState.numberOfPeople || ''}
-          onChange={tipContext.handlePeopleChange}
-          onBlur={tipContext.handleInputBlur}
+          onChange={handlePeopleChange}
+          onBlur={handleInputBlur}
         />
       </div>
     </div>

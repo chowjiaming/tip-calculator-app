@@ -1,100 +1,81 @@
+import {
+  TipCalculatorActions,
+  TipCalculatorState,
+} from '@/src/utils/tipCalculatorTypes';
+
+export const initialTipCalculatorState: TipCalculatorState = {
+  billAmount: 0,
+  tipPercentage: 5,
+  customTipPercentage: 0,
+  numberOfPeople: 0,
+  billError: '',
+  tipPercentageError: '',
+  numberOfPeopleError: '',
+  totalBillPerPerson: 0,
+  tipPerPerson: 0,
+};
+
 export function tipCalculatorReducer(
   state: TipCalculatorState,
   action: TipCalculatorActions
 ): TipCalculatorState {
   switch (action.type) {
     case 'UPDATE_BILL': {
-      if (typeof action.payload !== 'number') {
+      if (isNaN(action.payload)) {
         return {
           ...state,
-          billAmount: 0,
-          billError: 'Bill amount must be a number',
         };
       }
       if (action.payload < 0) {
         return {
           ...state,
-          billAmount: 0,
           billError: 'Bill amount cannot be negative',
         };
       }
       if (action.payload > 1000000) {
         return {
           ...state,
-          billAmount: 1000000,
           billError: 'Bill amount cannot be greater than 1,000,000',
         };
       }
       if (action.payload === 0) {
         return {
           ...state,
-          billAmount: 0,
-          billError: 'Bill amount cannot be zero',
+          billAmount: action.payload,
+          totalBillPerPerson: 0,
+          tipPerPerson: 0,
         };
       }
 
-      if (state.numberOfPeople > 0) {
-        const tipAmount =
-          (action.payload * state.tipPercentage) / 100 / state.numberOfPeople;
-        const totalAmount = action.payload / state.numberOfPeople + tipAmount;
+      if (state.numberOfPeople > 0 && state.tipPercentage >= 0) {
+        const tipPerPerson = (action.payload * state.tipPercentage) / 100;
+        const totalBillPerPerson =
+          action.payload / state.numberOfPeople + tipPerPerson;
 
         return {
           ...state,
           billAmount: action.payload,
           billError: '',
-          tipAmount,
-          totalAmount,
+          totalBillPerPerson,
+          tipPerPerson,
         };
       }
 
       return {...state, billAmount: action.payload, billError: ''};
     }
     case 'UPDATE_TIP': {
-      if (typeof action.payload !== 'number') {
-        return {
-          ...state,
-          tipPercentage: 0,
-          customTipPercentage: 0,
-          tipPercentageError: 'Tip percentage must be a number',
-        };
-      }
-      if (action.payload < 0) {
-        return {
-          ...state,
-          tipPercentage: 0,
-          customTipPercentage: 0,
-          tipPercentageError: 'Tip percentage cannot be negative',
-        };
-      }
-      if (action.payload > 100) {
-        return {
-          ...state,
-          tipPercentage: 100,
-          customTipPercentage: 0,
-          tipPercentageError: 'Tip percentage cannot be greater than 100',
-        };
-      }
-      if (action.payload === 0) {
-        return {
-          ...state,
-          tipPercentage: 0,
-          customTipPercentage: 0,
-          tipPercentageError: 'Tip percentage cannot be zero',
-        };
-      }
-
-      if (state.numberOfPeople > 0) {
-        const tipAmount =
-          (state.billAmount * action.payload) / 100 / state.numberOfPeople;
-        const totalAmount = state.billAmount / state.numberOfPeople + tipAmount;
+      if (state.billAmount >= 0 && state.numberOfPeople > 0) {
+        const tipPerPerson = (state.billAmount * action.payload) / 100;
+        const totalBillPerPerson =
+          state.billAmount / state.numberOfPeople + tipPerPerson;
 
         return {
           ...state,
           tipPercentage: action.payload,
           customTipPercentage: 0,
           tipPercentageError: '',
-          tipAmount,
-          totalAmount,
+          totalBillPerPerson,
+          tipPerPerson,
         };
       }
 
@@ -106,46 +87,43 @@ export function tipCalculatorReducer(
       };
     }
     case 'UPDATE_PEOPLE': {
-      if (typeof action.payload !== 'number') {
+      if (isNaN(action.payload)) {
         return {
           ...state,
-          numberOfPeople: 0,
-          numberOfPeopleError: 'Number of people must be a number',
         };
       }
       if (action.payload < 0) {
         return {
           ...state,
-          numberOfPeople: 0,
           numberOfPeopleError: 'Number of people cannot be negative',
         };
       }
-      if (action.payload > 100) {
+      if (action.payload > 1000) {
         return {
           ...state,
-          numberOfPeople: 100,
-          numberOfPeopleError: 'Number of people cannot be greater than 100',
+          numberOfPeopleError: 'Number of people cannot be greater than 1000',
         };
       }
       if (action.payload === 0) {
         return {
           ...state,
-          numberOfPeople: 0,
-          numberOfPeopleError: 'Number of people cannot be zero',
+          numberOfPeople: action.payload,
+          totalBillPerPerson: 0,
+          tipPerPerson: 0,
         };
       }
 
-      if (state.billAmount > 0) {
-        const tipAmount =
-          (state.billAmount * state.tipPercentage) / 100 / action.payload;
-        const totalAmount = state.billAmount / action.payload + tipAmount;
+      if (state.billAmount >= 0 && state.tipPercentage >= 0) {
+        const tipPerPerson = (state.billAmount * state.tipPercentage) / 100;
+        const totalBillPerPerson =
+          state.billAmount / action.payload + tipPerPerson;
 
         return {
           ...state,
           numberOfPeople: action.payload,
           numberOfPeopleError: '',
-          tipAmount,
-          totalAmount,
+          totalBillPerPerson,
+          tipPerPerson,
         };
       }
 
@@ -155,37 +133,37 @@ export function tipCalculatorReducer(
         numberOfPeopleError: '',
       };
     }
-    case 'UPDATE_CUSTOM_TIP':
-      if (typeof action.payload !== 'number') {
+    case 'UPDATE_CUSTOM_TIP': {
+      if (isNaN(action.payload)) {
         return {
           ...state,
-          tipPercentage: 0,
-          customTipPercentage: 0,
-          tipPercentageError: 'Tip percentage must be a number',
         };
       }
       if (action.payload < 0) {
         return {
           ...state,
-          tipPercentage: 0,
-          customTipPercentage: 0,
           tipPercentageError: 'Tip percentage cannot be negative',
         };
       }
       if (action.payload > 100) {
         return {
           ...state,
-          tipPercentage: 100,
-          customTipPercentage: 0,
           tipPercentageError: 'Tip percentage cannot be greater than 100',
         };
       }
-      if (action.payload === 0) {
+
+      if (state.billAmount >= 0 && state.numberOfPeople > 0) {
+        const tipPerPerson = (state.billAmount * action.payload) / 100;
+        const totalBillPerPerson =
+          state.billAmount / state.numberOfPeople + tipPerPerson;
+
         return {
           ...state,
-          tipPercentage: 0,
-          customTipPercentage: 0,
-          tipPercentageError: 'Tip percentage cannot be zero',
+          tipPercentage: action.payload,
+          customTipPercentage: action.payload,
+          tipPercentageError: '',
+          totalBillPerPerson,
+          tipPerPerson,
         };
       }
 
@@ -195,6 +173,7 @@ export function tipCalculatorReducer(
         customTipPercentage: action.payload,
         tipPercentageError: '',
       };
+    }
     case 'INPUT_BLUR':
       return {
         ...state,
@@ -208,51 +187,3 @@ export function tipCalculatorReducer(
       return state;
   }
 }
-
-export const initialTipCalculatorState: TipCalculatorState = {
-  billAmount: 0,
-  tipPercentage: 5,
-  customTipPercentage: 0,
-  numberOfPeople: 0,
-  billError: '',
-  tipPercentageError: '',
-  numberOfPeopleError: '',
-  tipAmount: 0,
-  totalAmount: 0,
-};
-
-export type TipCalculatorActions =
-  | {
-      type: 'UPDATE_BILL';
-      payload: number;
-    }
-  | {
-      type: 'UPDATE_TIP';
-      payload: number;
-    }
-  | {
-      type: 'UPDATE_PEOPLE';
-      payload: number;
-    }
-  | {
-      type: 'UPDATE_CUSTOM_TIP';
-      payload: number;
-    }
-  | {
-      type: 'INPUT_BLUR';
-    }
-  | {
-      type: 'RESET';
-    };
-
-export type TipCalculatorState = {
-  billAmount: number;
-  tipPercentage: number;
-  customTipPercentage: number;
-  numberOfPeople: number;
-  billError: string;
-  tipPercentageError: string;
-  numberOfPeopleError: string;
-  tipAmount: number;
-  totalAmount: number;
-};

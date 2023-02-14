@@ -64,11 +64,6 @@ const Meta: NextPage<Props> = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageSource} />
       <meta name="twitter:image:alt" content={imageAltText} />
-      {/* Fonts */}
-      <link
-        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
-        rel="stylesheet"
-      />
     </Head>
   );
 };

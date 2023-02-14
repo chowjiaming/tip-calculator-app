@@ -1,35 +1,40 @@
-import {Fragment, useContext} from 'react';
-import TipContext from '@/src/context/tipContext';
+import {useContext} from 'react';
+import {TipContext} from '@/src/context/tipContext';
 import {tipPercetageOptions} from '@/src/config/tipPercentageOptions';
-import TipPercentageBox from '@/src/components/TipPercentageBoxes/TipPercentageBox/TipPercentageBox';
+import {TipPercentageBox} from '@/src/components/TipPercentageBoxes/TipPercentageBox/TipPercentageBox';
 import styles from '@/styles/TipPercentageBoxes.module.css';
 import inputCardStyles from '@/styles/InputCard.module.css';
 import tipPercentageBoxStyles from '@/styles/TipPercentageBox.module.css';
 
-const TipPercentageBoxes: React.FC = () => {
+export function TipPercentageBoxes(): JSX.Element {
   const tipContext = useContext(TipContext);
-
   if (!tipContext) throw new Error('Context is not defined');
 
-  const standardOptions: React.ReactElement[] = tipPercetageOptions.map(
-    (percentage) => {
-      return <TipPercentageBox key={percentage} percentage={percentage} />;
-    }
-  );
+  const handleCustomTip = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    tipContext.dispatch({
+      type: 'UPDATE_CUSTOM_TIP',
+      payload: Number(e.target.value),
+    });
+  };
+  const handleInputBlur = (): void => {
+    tipContext.dispatch({type: 'INPUT_BLUR'});
+  };
 
   return (
-    <Fragment>
+    <>
       <h2
         className={
-          tipContext.tipCalculatorState.billError
+          tipContext.tipCalculatorState.tipPercentageError
             ? inputCardStyles['input__header--error']
-            : undefined
+            : ''
         }
       >
         Select Tip %
       </h2>
       <div className={styles['percentage']}>
-        {standardOptions}
+        {tipPercetageOptions.map((percentage) => (
+          <TipPercentageBox key={percentage} percentage={percentage} />
+        ))}
         <div className={styles['percentage__custom']}>
           {tipContext.tipCalculatorState.tipPercentageError ? (
             <span className={inputCardStyles['input__message--error']}>
@@ -42,17 +47,15 @@ const TipPercentageBoxes: React.FC = () => {
             } ${inputCardStyles['input__input']} ${
               tipContext.tipCalculatorState.tipPercentageError
                 ? inputCardStyles['input__input--error']
-                : undefined
+                : ''
             }`}
             placeholder="Custom"
             value={tipContext.tipCalculatorState.customTipPercentage || ''}
-            onChange={tipContext.handleCustomTip}
-            onBlur={tipContext.handleInputBlur}
+            onChange={handleCustomTip}
+            onBlur={handleInputBlur}
           />
         </div>
       </div>
-    </Fragment>
+    </>
   );
-};
-
-export default TipPercentageBoxes;
+}

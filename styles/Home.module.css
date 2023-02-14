@@ -7,4 +7,5 @@
   align-items: center;
   position: relative;
   min-height: 100vh;
+  padding: 0 2rem;
 }

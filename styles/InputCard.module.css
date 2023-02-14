@@ -23,6 +23,7 @@
   width: 100%;
   color: hsl(183, 100%, 15%);
   background-color: hsl(189, 41%, 97%);
+  box-sizing: border-box;
 }
 
 .input__input:hover {

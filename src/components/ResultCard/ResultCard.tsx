@@ -1,10 +1,10 @@
 import {useContext} from 'react';
-import TipContext from '@/src/context/tipContext';
+import {TipContext} from '@/src/context/tipContext';
 import {currencyFormatter} from '@/src/helpers/formatter';
-import ResetButton from '@/src/components/ResetButton/ResetButton';
+import {ResetButton} from '@/src/components/ResetButton/ResetButton';
 import styles from '@/styles/ResultCard.module.css';
 
-const ResultCard: React.FC = () => {
+export function ResultCard(): JSX.Element {
   const tipContext = useContext(TipContext);
   if (!tipContext) throw new Error('Contexts are not defined');
 
@@ -18,7 +18,7 @@ const ResultCard: React.FC = () => {
           <p className={styles['result__paragraph']}>/ person</p>
         </div>
         <h2 className={styles['result__value']}>
-          {currencyFormatter.format(tipContext.tipCalculatorState.totalAmount)}
+          {currencyFormatter.format(tipContext.tipCalculatorState.tipPerPerson)}
         </h2>
       </div>
       <div className={styles['result__container']}>
@@ -29,12 +29,12 @@ const ResultCard: React.FC = () => {
           <p className={styles['result__paragraph']}>/ person</p>
         </div>
         <h2 className={styles['result__value']}>
-          {currencyFormatter.format(tipContext.tipCalculatorState.tipAmount)}
+          {currencyFormatter.format(
+            tipContext.tipCalculatorState.totalBillPerPerson
+          )}
         </h2>
       </div>
       <ResetButton />
     </div>
   );
-};
-
-export default ResultCard;
+}

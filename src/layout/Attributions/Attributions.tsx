@@ -1,6 +1,6 @@
 import styles from '@/styles/Attributions.module.css';
 
-const Attributions: React.FC = () => {
+export function Attributions(): JSX.Element {
   return (
     <footer className={styles['footer']}>
       <div>
@@ -24,6 +24,4 @@ const Attributions: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Attributions;
+}

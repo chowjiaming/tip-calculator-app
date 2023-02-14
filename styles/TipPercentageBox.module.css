@@ -5,6 +5,7 @@
   padding: 0.5em;
   cursor: pointer;
   background-color: hsl(183, 100%, 15%);
+  transition: background-color 50ms ease-out;
 }
 
 .percentage__box:hover {
@@ -30,6 +31,7 @@
 .percentage__box--custom {
   background-color: hsl(189, 41%, 97%);
   color: hsl(186, 14%, 43%);
+  cursor: text;
 }
 
 .percentage__box.percentage__box--custom {

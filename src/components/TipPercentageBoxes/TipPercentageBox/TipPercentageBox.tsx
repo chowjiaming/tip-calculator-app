@@ -1,31 +1,34 @@
-import {useContext} from 'react';
-import TipContext from '@/src/context/tipContext';
+import {useContext, useMemo} from 'react';
+import {TipContext} from '@/src/context/tipContext';
 import styles from '@/styles/TipPercentageBox.module.css';
 
-interface Props {
+type Props = {
   percentage: string;
-}
-
-const TipPercentageBox: React.FC<Props> = ({percentage}) => {
+};
+export function TipPercentageBox({percentage}: Props): JSX.Element {
   const tipContext = useContext(TipContext);
+  if (!tipContext) throw new Error('Context is not defined');
 
-  if (!tipContext) throw new Error('TipContext is not defined');
+  const isBoxActive = useMemo(() => {
+    return Number(percentage) === tipContext.tipCalculatorState.tipPercentage;
+  }, [percentage, tipContext.tipCalculatorState.tipPercentage]);
 
-  const isBoxActive =
-    Number(percentage) === tipContext.tipCalculatorState.tipPercentage;
+  const handleTipBoxClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+    tipContext.dispatch({
+      type: 'UPDATE_TIP',
+      payload: parseInt(e.currentTarget.title),
+    });
+  };
 
   return (
     <div
       className={`${styles['percentage__box']} ${
-        isBoxActive ? styles['percentage__box--active'] : undefined
+        isBoxActive ? styles['percentage__box--active'] : ''
       }`}
-      id={percentage}
-      title={percentage}
-      onClick={tipContext.handleTipBoxClick}
+      title={`${percentage}%`}
+      onClick={handleTipBoxClick}
     >
       {`${percentage}%`}
     </div>
   );
-};
-
-export default TipPercentageBox;
+}
