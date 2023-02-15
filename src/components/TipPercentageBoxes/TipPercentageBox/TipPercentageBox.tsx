@@ -19,7 +19,7 @@ export function TipPercentageBox({percentage}: Props): JSX.Element {
   ): void => {
     tipContext.dispatch({
       type: 'UPDATE_TIP',
-      payload: parseInt(e.currentTarget.title),
+      payload: parseInt(e.currentTarget.title, 10),
     });
   };
 

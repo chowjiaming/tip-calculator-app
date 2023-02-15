@@ -15,6 +15,7 @@
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "react/react-in-jsx-scope": "off",
-    "jest/no-deprecated-functions": "off"
+    "jest/no-deprecated-functions": "off",
+    "no-unused-vars": "off"
   }
 }
