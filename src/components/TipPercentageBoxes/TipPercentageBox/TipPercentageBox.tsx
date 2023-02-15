@@ -1,23 +1,28 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useContext, useMemo} from 'preact/hooks';
-import {TipContext} from '../../../context/tipContext';
+import {
+  TipStateContext,
+  TipDispatchContext,
+} from '../../../utils/tipCalculatorContext';
 import './TipPercentageBox.css';
 
 type Props = {
   percentage: string;
 };
 export function TipPercentageBox({percentage}: Props): JSX.Element {
-  const tipContext = useContext(TipContext);
-  if (!tipContext) throw new Error('Context is not defined');
+  const tipCalculatorState = useContext(TipStateContext);
+  const dispatch = useContext(TipDispatchContext);
+  if (!tipCalculatorState) throw new Error('TipStateContext not loaded');
+  if (!dispatch) throw new Error('TipDispatchContext not loaded');
 
   const isBoxActive = useMemo(() => {
-    return Number(percentage) === tipContext.tipCalculatorState.tipPercentage;
-  }, [percentage, tipContext.tipCalculatorState.tipPercentage]);
+    return Number(percentage) === tipCalculatorState.tipPercentage;
+  }, [percentage, tipCalculatorState.tipPercentage]);
 
   const handleTipBoxClick = (
     e: JSX.TargetedMouseEvent<HTMLDivElement>
   ): void => {
-    tipContext.dispatch({
+    dispatch({
       type: 'UPDATE_TIP',
       payload: parseInt(e.currentTarget.title, 10),
     });

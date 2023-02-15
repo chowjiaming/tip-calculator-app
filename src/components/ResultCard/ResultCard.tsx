@@ -1,13 +1,13 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useContext} from 'preact/hooks';
-import {TipContext} from '../../context/tipContext';
+import {TipStateContext} from '../../utils/tipCalculatorContext';
 import {currencyFormatter} from '../../helpers/formatter';
 import {ResetButton} from '../ResetButton/ResetButton';
 import './ResultCard.css';
 
 export function ResultCard(): JSX.Element {
-  const tipContext = useContext(TipContext);
-  if (!tipContext) throw new Error('Contexts are not defined');
+  const tipCalculatorState = useContext(TipStateContext);
+  if (!tipCalculatorState) throw new Error('TipStateContext not loaded');
 
   return (
     <div class="result">
@@ -17,7 +17,7 @@ export function ResultCard(): JSX.Element {
           <p class="result__paragraph">/ person</p>
         </div>
         <h2 class="result__value">
-          {currencyFormatter.format(tipContext.tipCalculatorState.tipPerPerson)}
+          {currencyFormatter.format(tipCalculatorState.tipPerPerson)}
         </h2>
       </div>
       <div class="result__container">
@@ -26,9 +26,7 @@ export function ResultCard(): JSX.Element {
           <p class="result__paragraph">/ person</p>
         </div>
         <h2 class="result__value">
-          {currencyFormatter.format(
-            tipContext.tipCalculatorState.totalBillPerPerson
-          )}
+          {currencyFormatter.format(tipCalculatorState.totalBillPerPerson)}
         </h2>
       </div>
       <ResetButton />

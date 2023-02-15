@@ -1,34 +1,37 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useContext} from 'preact/hooks';
-import {TipContext} from '../../context/tipContext';
+import {
+  TipStateContext,
+  TipDispatchContext,
+} from '../../utils/tipCalculatorContext';
 import {tipPercetageOptions} from '../../config/tipPercentageOptions';
 import {TipPercentageBox} from './TipPercentageBox/TipPercentageBox';
 import './TipPercentageBoxes.css';
 
 export function TipPercentageBoxes(): JSX.Element {
-  const tipContext = useContext(TipContext);
-  if (!tipContext) throw new Error('Context is not defined');
+  const tipCalculatorState = useContext(TipStateContext);
+  const dispatch = useContext(TipDispatchContext);
+  if (!tipCalculatorState) throw new Error('TipStateContext not loaded');
+  if (!dispatch) throw new Error('TipDispatchContext not loaded');
 
   const handleCustomTip = (
     e: JSX.TargetedEvent<HTMLInputElement, Event>
   ): void => {
-    tipContext.dispatch({
+    dispatch({
       type: 'UPDATE_CUSTOM_TIP',
       // strange preact bug, need to cast to HTMLInputElement
       payload: Number((e.target as HTMLInputElement).value),
     });
   };
   const handleInputBlur = (): void => {
-    tipContext.dispatch({type: 'INPUT_BLUR'});
+    dispatch({type: 'INPUT_BLUR'});
   };
 
   return (
     <>
       <h2
         class={`input__header ${
-          tipContext.tipCalculatorState.tipPercentageError
-            ? 'input__header--error'
-            : ''
+          tipCalculatorState.tipPercentageError ? 'input__header--error' : ''
         }`}
       >
         Select Tip %
@@ -38,19 +41,17 @@ export function TipPercentageBoxes(): JSX.Element {
           <TipPercentageBox key={percentage} percentage={percentage} />
         ))}
         <div class="percentage__custom">
-          {tipContext.tipCalculatorState.tipPercentageError ? (
+          {tipCalculatorState.tipPercentageError ? (
             <span class="input__message input__message--error">
-              {tipContext.tipCalculatorState.tipPercentageError}
+              {tipCalculatorState.tipPercentageError}
             </span>
           ) : null}
           <input
             class={`percentage__box percentage__box--custom input__input ${
-              tipContext.tipCalculatorState.tipPercentageError
-                ? 'input__input--error'
-                : ''
+              tipCalculatorState.tipPercentageError ? 'input__input--error' : ''
             }`}
             placeholder="Custom"
-            value={tipContext.tipCalculatorState.customTipPercentage || ''}
+            value={tipCalculatorState.customTipPercentage || ''}
             onInput={handleCustomTip}
             onBlur={handleInputBlur}
           />
