@@ -13,7 +13,7 @@ export function Attributions(): JSX.Element {
         >
           Frontend Mentor
         </a>
-        . Coded by{' '}
+        . Made with ❤️ by{' '}
         <a
           href="https://github.com/chowjiaming"
           target="_blank"
