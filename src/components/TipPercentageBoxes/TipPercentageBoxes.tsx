@@ -1,18 +1,11 @@
 import type {JSX} from 'preact/jsx-runtime';
-import {useContext} from 'preact/hooks';
-import {
-  TipStateContext,
-  TipDispatchContext,
-} from '../../utils/tipCalculatorContext';
+import {useTipContext} from '../../utils/tipCalculatorContext';
 import {tipPercetageOptions} from '../../config/tipPercentageOptions';
 import {TipPercentageBox} from './TipPercentageBox/TipPercentageBox';
 import './TipPercentageBoxes.css';
 
 export function TipPercentageBoxes(): JSX.Element {
-  const tipCalculatorState = useContext(TipStateContext);
-  const dispatch = useContext(TipDispatchContext);
-  if (!tipCalculatorState) throw new Error('TipStateContext not loaded');
-  if (!dispatch) throw new Error('TipDispatchContext not loaded');
+  const {state, dispatch} = useTipContext();
 
   const handleCustomTip = (
     e: JSX.TargetedEvent<HTMLInputElement, Event>
@@ -31,7 +24,7 @@ export function TipPercentageBoxes(): JSX.Element {
     <>
       <h2
         class={`input__header ${
-          tipCalculatorState.tipPercentageError ? 'input__header--error' : ''
+          state.tipPercentageError ? 'input__header--error' : ''
         }`}
       >
         Select Tip %
@@ -41,17 +34,17 @@ export function TipPercentageBoxes(): JSX.Element {
           <TipPercentageBox key={percentage} percentage={percentage} />
         ))}
         <div class="percentage__custom">
-          {tipCalculatorState.tipPercentageError ? (
+          {state.tipPercentageError ? (
             <span class="input__message input__message--error">
-              {tipCalculatorState.tipPercentageError}
+              {state.tipPercentageError}
             </span>
           ) : null}
           <input
             class={`percentage__box percentage__box--custom input__input ${
-              tipCalculatorState.tipPercentageError ? 'input__input--error' : ''
+              state.tipPercentageError ? 'input__input--error' : ''
             }`}
             placeholder="Custom"
-            value={tipCalculatorState.customTipPercentage || ''}
+            value={state.customTipPercentage || ''}
             onInput={handleCustomTip}
             onBlur={handleInputBlur}
           />
