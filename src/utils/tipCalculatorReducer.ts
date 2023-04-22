@@ -1,4 +1,7 @@
-import {TipCalculatorActions, TipCalculatorState} from './tipCalculatorTypes';
+import {
+  TipCalculatorActions,
+  TipCalculatorState,
+} from '@/utils/tipCalculatorTypes';
 
 // Define the minimum and maximum limits for the bill amount, number of people, and tip percentage
 enum ValidationLimits {

@@ -3,7 +3,7 @@ import {useContext} from 'preact/hooks';
 import type {
   TipCalculatorState,
   TipCalculatorActions,
-} from './tipCalculatorTypes';
+} from '@/utils/tipCalculatorTypes';
 
 // Create a context for storing the tip calculator state
 export const TipStateContext = createContext<TipCalculatorState | null>(null);

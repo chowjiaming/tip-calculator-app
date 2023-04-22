@@ -1,17 +1,17 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useReducer} from 'preact/hooks';
-import {Attributions} from './layout/Attributions/Attributions';
-import {TipCalculator} from './layout/TipCalculator/TipCalculator';
-import {Title} from './layout/Title/Title';
+import {Attributions} from '@/layout/Attributions/Attributions';
+import {TipCalculator} from '@/layout/TipCalculator/TipCalculator';
+import {Title} from '@/layout/Title/Title';
 import {
   TipStateContext,
   TipDispatchContext,
-} from './utils/tipCalculatorContext';
+} from '@/utils/tipCalculatorContext';
 import {
   initialTipCalculatorState,
   tipCalculatorReducer,
-} from './utils/tipCalculatorReducer';
-import './app.css';
+} from '@/utils/tipCalculatorReducer';
+import '@/app.css';
 
 /**
  * The root component of the tip calculator app.

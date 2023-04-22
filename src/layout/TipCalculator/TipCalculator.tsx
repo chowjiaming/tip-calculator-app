@@ -1,7 +1,7 @@
 import type {JSX} from 'preact/jsx-runtime';
-import {InputCard} from '../../components/InputCard/InputCard';
-import {ResultCard} from '../../components/ResultCard/ResultCard';
-import './TipCalculator.css';
+import {InputCard} from '@/components/InputCard/InputCard';
+import {ResultCard} from '@/components/ResultCard/ResultCard';
+import '@/layout/TipCalculator/TipCalculator.css';
 
 /**
  * The main component for the tip calculator.
