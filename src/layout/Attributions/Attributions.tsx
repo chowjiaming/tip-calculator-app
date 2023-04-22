@@ -1,6 +1,11 @@
 import type {JSX} from 'preact/jsx-runtime';
 import './Attributions.css';
 
+/**
+ * Renders the attributions footer.
+ *
+ * @returns {JSX.Element} The JSX code for the Attributions component.
+ */
 export function Attributions(): JSX.Element {
   return (
     <footer class="attribution">

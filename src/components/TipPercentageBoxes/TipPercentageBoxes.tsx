@@ -4,9 +4,17 @@ import {tipPercetageOptions} from '../../config/tipPercentageOptions';
 import {TipPercentageBox} from './TipPercentageBox/TipPercentageBox';
 import './TipPercentageBoxes.css';
 
+/**
+ * Renders the tip percentage selection boxes and custom input field.
+ */
 export function TipPercentageBoxes(): JSX.Element {
   const {state, dispatch} = useTipContext();
 
+  /**
+   * Updates the custom tip percentage value in the state on input change.
+   *
+   * @param e - The input event.
+   */
   const handleCustomTip = (
     e: JSX.TargetedEvent<HTMLInputElement, Event>
   ): void => {
@@ -16,6 +24,10 @@ export function TipPercentageBoxes(): JSX.Element {
       payload: Number((e.target as HTMLInputElement).value),
     });
   };
+
+  /**
+   * Dispatches an action to handle input blur events.
+   */
   const handleInputBlur = (): void => {
     dispatch({type: 'INPUT_BLUR'});
   };
@@ -30,9 +42,11 @@ export function TipPercentageBoxes(): JSX.Element {
         Select Tip %
       </h2>
       <div class="percentage">
+        {/* Render tip percentage boxes */}
         {tipPercetageOptions.map((percentage) => (
           <TipPercentageBox key={percentage} percentage={percentage} />
         ))}
+        {/* Render custom tip input field */}
         <div class="percentage__custom">
           {state.tipPercentageError ? (
             <span class="input__message input__message--error">

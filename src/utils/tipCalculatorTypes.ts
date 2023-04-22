@@ -1,3 +1,4 @@
+// Tip Calculator Types
 export type TipCalculatorActions =
   | {
       type: 'UPDATE_BILL';
@@ -22,6 +23,7 @@ export type TipCalculatorActions =
       type: 'RESET';
     };
 
+// defines the state of the tip calculator
 export type TipCalculatorState = {
   billAmount: number;
   tipPercentage: number;

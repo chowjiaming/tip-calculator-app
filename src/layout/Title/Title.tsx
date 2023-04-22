@@ -1,6 +1,11 @@
 import type {JSX} from 'preact/jsx-runtime';
 import './Title.css';
 
+/**
+ * Title component representing the app header.
+ *
+ * @returns {JSX.Element} The rendered Title component.
+ */
 export function Title(): JSX.Element {
   return (
     <header class="title">

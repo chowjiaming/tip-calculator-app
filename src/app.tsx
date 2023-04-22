@@ -13,12 +13,20 @@ import {
 } from './utils/tipCalculatorReducer';
 import './app.css';
 
+/**
+ * The root component of the tip calculator app.
+ * Renders the Title, TipCalculator, and Attributions components wrapped in context providers.
+ *
+ * @returns {JSX.Element} The rendered App component.
+ */
 export function App(): JSX.Element {
+  // Set up the tip calculator state and dispatch function using the useReducer hook
   const [tipCalculatorState, dispatch] = useReducer(
     tipCalculatorReducer,
     initialTipCalculatorState
   );
 
+  // Render the Title, TipCalculator, and Attributions components wrapped in context providers
   return (
     <div class="app-container">
       <Title />
