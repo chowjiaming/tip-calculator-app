@@ -1,8 +1,7 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useReducer} from 'preact/hooks';
-import {Attributions} from '@/layout/Attributions';
 import {TipCalculator} from '@/layout/TipCalculator';
-import {Title} from '@/layout/Title';
+import {Layout} from '@/layout';
 import {
   TipStateContext,
   TipDispatchContext,
@@ -15,7 +14,7 @@ import '@/app.css';
 
 /**
  * The root component of the tip calculator app.
- * Renders the Title, TipCalculator, and Attributions components wrapped in context providers.
+ * Renders the layout component with the tip calculator state and dispatch function in context.
  *
  * @returns {JSX.Element} The rendered App component.
  */
@@ -26,16 +25,14 @@ export function App(): JSX.Element {
     initialTipCalculatorState
   );
 
-  // Render the Title, TipCalculator, and Attributions components wrapped in context providers
+  // Render layout component with the tip calculator state and dispatch function in context
   return (
-    <div class="app">
-      <Title />
+    <Layout>
       <TipStateContext.Provider value={tipCalculatorState}>
         <TipDispatchContext.Provider value={dispatch}>
           <TipCalculator />
         </TipDispatchContext.Provider>
       </TipStateContext.Provider>
-      <Attributions />
-    </div>
+    </Layout>
   );
 }
