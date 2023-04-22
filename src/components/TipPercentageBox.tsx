@@ -1,7 +1,6 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useMemo} from 'preact/hooks';
 import {useTipContext} from '@/utils/tipCalculatorContext';
-import '@/components/TipPercentageBoxes/TipPercentageBox/TipPercentageBox.css';
 
 type Props = {
   percentage: string;

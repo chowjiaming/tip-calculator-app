@@ -1,5 +1,4 @@
 import type {JSX} from 'preact/jsx-runtime';
-import '@/layout/Attributions/Attributions.css';
 
 /**
  * Renders the attributions footer.

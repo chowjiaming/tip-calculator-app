@@ -1,7 +1,6 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useTipContext} from '@/utils/tipCalculatorContext';
-import {TipPercentageBoxes} from '@/components/TipPercentageBoxes/TipPercentageBoxes';
-import '@/components/InputCard/InputCard.css';
+import {TipPercentageBoxes} from '@/components/TipPercentageBoxes';
 
 /**
  * InputCard component displays input fields for bill amount and number of people

@@ -1,8 +1,7 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useTipContext} from '@/utils/tipCalculatorContext';
 import {currencyFormatter} from '@/helpers/formatter';
-import {ResetButton} from '@/components/ResetButton/ResetButton';
-import '@/components/ResultCard/ResultCard.css';
+import {ResetButton} from '@/components/ResetButton';
 
 /**
  * Component that displays the calculated tip and total bill per person,

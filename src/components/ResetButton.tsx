@@ -1,7 +1,6 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useContext} from 'preact/hooks';
 import {TipDispatchContext} from '@/utils/tipCalculatorContext';
-import '@/components/ResetButton/ResetButton.css';
 
 /**
  * A button that resets the tip calculator form when clicked.

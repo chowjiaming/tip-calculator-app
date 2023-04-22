@@ -1,5 +1,4 @@
 import type {JSX} from 'preact/jsx-runtime';
-import '@/layout/Title/Title.css';
 
 /**
  * Title component representing the app header.

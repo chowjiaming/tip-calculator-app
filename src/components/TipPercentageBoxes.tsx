@@ -1,8 +1,7 @@
 import type {JSX} from 'preact/jsx-runtime';
 import {useTipContext} from '@/utils/tipCalculatorContext';
 import {tipPercetageOptions} from '@/config/tipPercentageOptions';
-import {TipPercentageBox} from '@/components/TipPercentageBoxes/TipPercentageBox/TipPercentageBox';
-import '@/components/TipPercentageBoxes/TipPercentageBoxes.css';
+import {TipPercentageBox} from '@/components/TipPercentageBox';
 
 /**
  * Renders the tip percentage selection boxes and custom input field.
